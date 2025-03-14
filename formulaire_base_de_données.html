@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'inscription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: #fff;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+            z-index: 1;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: rise 5s infinite;
+        }
+        @keyframes rise {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-600px);
+                opacity: 0;
+            }
+        }
+        .flash {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: flash 1s infinite;
+            z-index: 0;
+        }
+        @keyframes flash {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bubbles">
+        <div class="bubble" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="bubble" style="left: 20%; animation-delay: 2s;"></div>
+        <div class="bubble" style="left: 30%; animation-delay: 4s;"></div>
+        <div class="bubble" style="left: 40%; animation-delay: 6s;"></div>
+        <div class="bubble" style="left: 50%; animation-delay: 8s;"></div>
+        <div class="bubble" style="left: 60%; animation-delay: 10s;"></div>
+        <div class="bubble" style="left: 70%; animation-delay: 12s;"></div>
+        <div class="bubble" style="left: 80%; animation-delay: 14s;"></div>
+        <div class="bubble" style="left: 90%; animation-delay: 16s;"></div>
+    </div>
+    <div class="flash"></div>
+    <form action="process.php" method="post">
+        <h2>Formulaire d'inscription</h2>
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="prénoms">Prénoms :</label>
+        <input type="text" id="prénoms" name="prénoms" required>
+
+        <label for="contact_whatsapp">Contact WhatsApp :</label>
+        <input type="text" id="contact_whatsapp" name="contact_whatsapp">
+
+        <label for="ville">Ville :</label>
+        <select id="ville" name="ville" required>
+            <option value="Abidjan">Abidjan</option>
+            <option value="Yopougon">Yopougon</option>
+            <option value="Cocody">Cocody</option>
+            <option value="Bouaké">Bouaké</option>
+            <option value="Korogho">Korogho</option>
+            <option value="Yamoussoukro">Yamoussoukro</option>
+            <option value="San Pedro">San Pedro</option>
+            <option value="Daloa">Daloa</option>
+            <option value="Divo">Divo</option>
+            <!-- Ajoutez d'autres options de ville ici -->
+        </select>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+
+        <input type="submit" value="Soumettre">
+    </form>
+</body>
+</html>
