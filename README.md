@@ -37,7 +37,7 @@ Actuellement en 1 ière année à l'Université de Technologies d'Abidjan.
  🛠️ Compétences Techniques
 
 Cybersécurité 
-Wireshark Nmap `Metasploit` `OWASP ZAP`
+`Wireshark` `Nmap`  `Metasploit` `OWASP ZAP`
 
 Réseaux 
 `Cisco Packet Tracer` `GNS3` `TCP/IP` `VPN`
