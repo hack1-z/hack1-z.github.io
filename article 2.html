@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA et Protection des Données 2024</title>
+    
+    <style>
+        /* CSS Personnalisé */
+        :root {
+            --primary: #2A5C82;
+            --secondary: #32BEA6;
+            --dark: #1A1A1A;
+            --light: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: var(--light);
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('votre-image-header.jpg');
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem auto;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            max-width: 350px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Section Vidéo */
+        .video-section {
+            background: #f0f0f0;
+            padding: 3rem;
+            margin: 2rem auto;
+            border-radius: 10px;
+            max-width: 900px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        /* Mode Sombre */
+        .dark-mode {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+
+        .dark-mode .card {
+            background: #333;
+            color: white;
+        }
+
+        /* Bouton */
+        button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Formulaire */
+        .newsletter-form {
+            margin-top: 2rem;
+        }
+
+        .newsletter-form input {
+            padding: 12px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: 2rem 1rem;
+            }
+            
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form input {
+                width: 100%;
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Révolution 2.0 : L'IA redéfinit la protection des données 🔒🤖</h1>
+        <p>Selon IBM, le coût moyen d'une fuite de données en 2024 atteint 4.5M$</p>
+    </header>
+
+    <section class="section">
+        <h2>Les 3 Rôles Clés de l'IA dans la protection de données</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>🔍 Détection proactive</h3>
+                <p>Microsoft Sentinel réduit le temps de réponse de 80%</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ Prévention des menaces</h3>
+                <p>Algorithmes prédictifs identifiant les vulnérabilités avant exploitation</p>
+            </div>
+            <div class="card">
+                <h3>🔐 Chiffrement intelligent</h3>
+                <p>Solutions adaptatives protégeant les données sensibles en temps réel</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark-mode">
+        <h2>Cas Concrets</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>🏦 Secteur Bancaire</h3>
+                <p>JPMorgan surveille 12 milliards de transactions/jour afin de protéger toutes les données sensibles.</p>
+            </div>
+            <div class="card">
+                <h3>🏥 Santé</h3>
+                <p>Protection des dossiers médicaux avec chiffrement homomorphe permettant l'analyse sans décryptage</p>
+            </div>
+            <div class="card">
+                <h3>🛒 E-commerce</h3>
+                <p>Détection des fraudes en temps réel avec une précision de 99.7%</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Vidéo Unique -->
+    <section class="section video-section">
+        <h2>Vidéo Explicative</h2>
+        <p>Découvrez comment l'IA transforme la cybersécurité (Durée : 5 minutes)</p>
+        
+        <div class="video-container">
+            <!-- Remplacez l'URL par votre vidéo -->
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <p>Pour plus d'informations, consultez notre <a href="https://www.example.com" style="color: var(--primary);">site web</a>.</p>
+    </section>
+
+    <section class="section">
+        <h2>Défis et Solutions</h2>
+        <div id="chart-container">
+            <!-- Vous pouvez ajouter un graphique ici plus tard -->
+            <img src="images/stats-ia.jpg" alt="Statistiques IA" style="max-width: 100%; border-radius: 8px;">
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="cta-box">
+            <h2>Prêt à sécuriser vos données ?</h2>
+            <p>Nous avons conçu un document complet pour la sécurité de vos données sensibles et personnelles.</p>
+            
+            <div class="newsletter-form">
+                <input type="email" id="emailInput" placeholder="Votre email professionnel" required>
+                <button id="newsletterBtn">Obtenir le guide gratuit</button>
+            </div>
+            
+            <p style="font-size: 0.9rem; margin-top: 1rem;">Vous recevrez le guide PDF ainsi que des ressources exclusives.</p>
+        </div>
+    </section>
+
+    <footer style="padding: 2rem; background: var(--dark); color: white;">
+        <p>© 2024 Protection Données IA - Tous droits réservés</p>
+    </footer>
+
+    <script>
+        // JavaScript pour interactions
+        // Mode Sombre
+        const darkModeToggle = document.createElement('button');
+        darkModeToggle.textContent = '🌓 Mode Sombre';
+        document.body.prepend(darkModeToggle);
+        
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '🌞 Mode Clair' : '🌓 Mode Sombre';
+        });
+
+        // Newsletter avec envoi de document
+        document.getElementById('newsletterBtn').addEventListener('click', () => {
+            const email = document.getElementById('emailInput').value;
+            
+            if(email) {
+                if(validateEmail(email)) {
+                    // Ici vous ajouteriez le code pour envoyer l'email à votre système
+                    // Pour l'exemple, nous simulons l'envoi
+                    
+                    // URL de votre document (remplacez par le vrai lien)
+                    const docUrl = "https://example.com/guide-protection-donnees.pdf";
+                    
+                    // Message de confirmation avec le lien de téléchargement
+                    alert(`Merci ! Votre guide est disponible ici : ${docUrl}\nUn email de confirmation a été envoyé à ${email}`);
+                    
+                    // Réinitialiser le champ
+                    document.getElementById('emailInput').value = '';
+                    
+                    // Optionnel : Enregistrer dans localStorage
+                    localStorage.setItem('subscribed', 'true');
+                } else {
+                    alert("Veuillez entrer une adresse email valide");
+                }
+            } else {
+                alert("Veuillez entrer votre adresse email");
+            }
+        });
+
+        // Validation simple d'email
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Animation au défilement
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                const position = card.getBoundingClientRect();
+                if(position.top < window.innerHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                    card.style.transition = `all 0.5s ease ${index * 0.1}s`;
+                }
+            });
+        });
+
+        // Initialiser les animations
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+        });
+    </script>
+</body>
+</html>

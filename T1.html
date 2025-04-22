@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pentest légal & Sauvegarde automatique via clé USB</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --accent: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+      --success: #2ecc71;
+      --warning: #f39c12;
+      --info: #3498db;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      color: var(--dark);
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: var(--box-shadow);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .header-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    main {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--light);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      color: var(--secondary);
+      margin-top: 1.5rem;
+    }
+
+    h4 {
+      font-size: 1.2rem;
+      color: var(--info);
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    code {
+      font-family: 'Fira Code', 'Courier New', monospace;
+      background-color: rgba(175, 184, 193, 0.2);
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    pre {
+      position: relative;
+      background-color: #f6f8fa;
+      border-radius: var(--border-radius);
+      padding: 1rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 1px solid #dfe2e5;
+      font-family: 'Fira Code', 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e1e4e8;
+      padding: 0.5rem 1rem;
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 0.8rem;
+      color: var(--dark);
+    }
+
+    .copy-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: var(--transition);
+    }
+
+    .copy-btn:hover {
+      background-color: var(--secondary);
+    }
+
+    .copy-btn.copied {
+      background-color: var(--success);
+    }
+
+    .note {
+      background-color: #e7f5ff;
+      border-left: 4px solid var(--info);
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+
+    .note strong {
+      color: var(--info);
+    }
+
+    .warning {
+      background-color: #fff3bf;
+      border-left: 4px solid var(--warning);
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+
+    .warning strong {
+      color: var(--warning);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      box-shadow: var(--box-shadow);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #dfe2e5;
+    }
+
+    th {
+      background-color: #f6f8fa;
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background-color: #f6f8fa;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #dfe2e5;
+      margin: 2rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .contact-section {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      background-color: var(--secondary);
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-links a:hover {
+      background-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .os-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .os-tab {
+      padding: 0.5rem 1rem;
+      background-color: #e1e4e8;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .os-tab.active {
+      background-color: var(--secondary);
+      color: white;
+    }
+
+    .os-content {
+      display: none;
+    }
+
+    .os-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .step {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed #dfe2e5;
+    }
+
+    .step:last-child {
+      border-bottom: none;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      main {
+        padding: 1rem;
+      }
+      
+      .contact-links {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><i class="fas fa-shield-alt"></i> Pentest Légal & Sauvegarde Automatique</h1>
+      <p class="header-subtitle">Guide complet pour les professionnels de la sécurité</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <main>
+      <section id="legal-framework">
+        <h2><i class="fas fa-balance-scale"></i> Cadre légal et éthique du pentesting</h2>
+        <p>Je dispose de toutes les autorisations légales nécessaires pour réaliser des tests d'intrusion (pentesting) dans un cadre strictement encadré et éthique.</p>
+        
+        <div class="warning">
+          <p><strong><i class="fas fa-exclamation-triangle"></i> Important :</strong> Je ne fournirai pas de tutoriel sur les keyloggers, même dans ce contexte, car ces outils peuvent être facilement détournés à des fins malveillantes. Les keyloggers enregistrent les frappes au clavier à l'insu de l'utilisateur, ce qui soulève des questions importantes de confidentialité et de légalité.</p>
+        </div>
+
+        <h3><i class="fas fa-question-circle"></i> Pourquoi je ne peux pas vous aider avec cela ?</h3>
+        <ul>
+          <li><strong><i class="fas fa-gavel"></i> Risque légal :</strong> Même avec autorisation, la diffusion d'outils ou tutoriels sur les keyloggers peut être mal interprétée ou utilisée à mauvais escient.</li>
+          <li><strong><i class="fas fa-user-secret"></i> Usage contraire à l'éthique :</strong> Ces outils peuvent servir à voler des identifiants, des données sensibles, ou espionner des utilisateurs sans consentement.</li>
+          <li><strong><i class="fas fa-ban"></i> Politique d'utilisation :</strong> OpenAI interdit la promotion d'outils pouvant être utilisés de manière malveillante.</li>
+        </ul>
+
+        <div class="note">
+          <p><strong><i class="fas fa-lightbulb"></i> Note :</strong> La sécurité informatique doit toujours respecter les lois, l'éthique et les bonnes pratiques, même dans un cadre de pentesting autorisé.</p>
+        </div>
+      </section>
+
+      <hr>
+
+      <section id="auto-backup">
+        <h2><i class="fas fa-usb"></i> Copie automatique des fichiers via clé USB</h2>
+        <p>Solution pour <strong>copier automatiquement les fichiers du dossier <code>Documents</code></strong> sur tous vos ordinateurs dès qu'une clé USB est branchée.</p>
+
+        <div class="os-tabs">
+          <button class="os-tab active" data-os="windows"><i class="fab fa-windows"></i> Windows</button>
+          <button class="os-tab" data-os="linux"><i class="fab fa-linux"></i> Linux</button>
+          <button class="os-tab" data-os="macos"><i class="fab fa-apple"></i> macOS</button>
+        </div>
+
+        <div id="windows-content" class="os-content active">
+          <div class="step">
+            <h3><i class="fas fa-code"></i> Étape 1 : Script Batch</h3>
+            <p>Créez un fichier <code>copydocs.bat</code> sur la clé USB :</p>
+            <div class="code-header">
+              <span>copydocs.bat</span>
+              <button class="copy-btn"><i class="far fa-copy"></i> Copier</button>
+            </div>
+            <pre><code>@echo off
+set BACKUP_DIR=%~d0\Documents_Backup_%COMPUTERNAME%_%DATE:~6,4%-%DATE:~3,2%-%DATE:~0,2%
+mkdir "%BACKUP_DIR%" >nul 2>&1
+robocopy "%USERPROFILE%\Documents" "%BACKUP_DIR%" /mir /njh /njs /ndl /nc /ns /np
+exit</code></pre>
+            
+            <h4><i class="fas fa-info-circle"></i> Explications :</h4>
+            <ul>
+              <li><code>%~d0</code> : Prend la lettre de la clé USB automatiquement</li>
+              <li><code>%COMPUTERNAME%</code> : Ajoute le nom de l'ordinateur</li>
+              <li><code>robocopy</code> : Copie en miroir de manière silencieuse</li>
+            </ul>
+          </div>
+
+          <div class="step">
+            <h3><i class="fas fa-tasks"></i> Étape 2 : Planificateur de tâches</h3>
+            <ol>
+              <li>Ouvrez le <strong>Planificateur de tâches</strong></li>
+              <li>Créez une tâche déclenchée par l'événement USB :
+                <ul>
+                  <li>Déclencheur : <code>Événement</code> → Log : <code>Microsoft-Windows-DriverFrameworks-UserMode/Operational</code></li>
+                  <li>ID : <code>2003</code> (insertion USB)</li>
+                  <li>Action : Lancer <code>copydocs.bat</code></li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div id="linux-content" class="os-content">
+          <div class="step">
+            <h3><i class="fas fa-code"></i> Étape 1 : Script Bash</h3>
+            <p>Créez <code>copydocs.sh</code> sur la clé :</p>
+            <div class="code-header">
+              <span>copydocs.sh</span>
+              <button class="copy-btn"><i class="far fa-copy"></i> Copier</button>
+            </div>
+            <pre><code>#!/bin/bash
+BACKUP_DIR="/media/$USER/USB_KEY/Documents_Backup_$(hostname)_$(date +%Y-%m-%d)"
+mkdir -p "$BACKUP_DIR"
+cp -r "/home/$USER/Documents/"* "$BACKUP_DIR" 2>/dev/null</code></pre>
+            
+            <p>Rendez-le exécutable :</p>
+            <div class="code-header">
+              <span>Terminal</span>
+              <button class="copy-btn"><i class="far fa-copy"></i> Copier</button>
+            </div>
+            <pre><code>chmod +x copydocs.sh</code></pre>
+          </div>
+
+          <div class="step">
+            <h3><i class="fas fa-plug"></i> Étape 2 : Déclenchement automatique</h3>
+            
+            <h4>Option A : Règle UDEV</h4>
+            <div class="code-header">
+              <span>Terminal</span>
+              <button class="copy-btn"><i class="far fa-copy"></i> Copier</button>
+            </div>
+            <pre><code>echo 'ACTION=="add", SUBSYSTEM=="usb", RUN+="/usr/bin/sudo -u $USER /media/$USER/USB_KEY/copydocs.sh"' | sudo tee /etc/udev/rules.d/99-usb-copy.rules
+sudo udevadm control --reload</code></pre>
+            
+            <h4>Option B : Cron Job</h4>
+            <div class="code-header">
+              <span>Terminal</span>
+              <button class="copy-btn"><i class="far fa-copy"></i> Copier</button>
+            </div>
+            <pre><code>crontab -e
+# Ajoutez la ligne suivante :
+* * * * * if [ -d "/media/$USER/USB_KEY" ]; then /media/$USER/USB_KEY/copydocs.sh; fi</code></pre>
+          </div>
+        </div>
+
+        <div id="macos-content" class="os-content">
+          <div class="step">
+            <h3><i class="fas fa-code"></i> Étape 1 : Script Bash</h3>
+            <p>Créez <code>copydocs.sh</code> sur la clé :</p>
+            <div class="code-header">
+              <span>copydocs.sh</span>
+              <button class="copy-btn"><i class="far fa-copy"></i> Copier</button>
+            </div>
+            <pre><code>#!/bin/bash
+BACKUP_DIR="/Volumes/USB_KEY/Documents_Backup_$(hostname)_$(date +%Y-%m-%d)"
+mkdir -p "$BACKUP_DIR"
+cp -r "$HOME/Documents/"* "$BACKUP_DIR" 2>/dev/null</code></pre>
+            
+            <p>Rendez-le exécutable :</p>
+            <div class="code-header">
+              <span>Terminal</span>
+              <button class="copy-btn"><i class="far fa-copy"></i> Copier</button>
+            </div>
+            <pre><code>chmod +x copydocs.sh</code></pre>
+          </div>
+
+          <div class="step">
+            <h3><i class="fas fa-robot"></i> Étape 2 : Automator (Solution GUI)</h3>
+            <ol>
+              <li>Ouvrez <strong>Automator</strong></li>
+              <li>Créez une nouvelle "Application"</li>
+              <li>Ajoutez une action "Exécuter le script Shell"</li>
+              <li>Collez le chemin complet vers votre script</li>
+              <li>Enregistrez dans <code>Applications</code></li>
+              <li>Configurez le lancement via <strong>launchd</strong> ou un profil de connexion</li>
+            </ol>
+          </div>
+        </div>
+
+        <h3><i class="fas fa-lock"></i> Sécurité & Optimisations</h3>
+        <ul>
+          <li><strong>Silencieux :</strong> ajoutez <code>&gt;nul 2&gt;&amp;1</code> (Windows) ou <code>2&gt;/dev/null</code> (Linux/macOS)</li>
+          <li><strong>Exclusions :</strong> utilisez <code>robocopy /xf *.tmp</code> (Windows) ou <code>cp --exclude=*.tmp</code> (Linux/macOS)</li>
+          <li><strong>Notification :</strong> ajoutez un message de fin :
+            <div class="code-header">
+              <span>Windows</span>
+              <button class="copy-btn"><i class="far fa-copy"></i> Copier</button>
+            </div>
+            <pre><code>msg * "Sauvegarde terminée !"</code></pre>
+            <div class="code-header">
+              <span>Linux/macOS</span>
+              <button class="copy-btn"><i class="far fa-copy"></i> Copier</button>
+            </div>
+            <pre><code>osascript -e 'display notification "Sauvegarde terminée !" with title "Backup"'</code></pre>
+          </li>
+        </ul>
+
+        <h3><i class="fas fa-bug"></i> Dépannage</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Problème</th>
+              <th>Solution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Clé non reconnue</td>
+              <td>Vérifiez le point de montage (<code>/media/...</code>, <code>/Volumes/...</code> ou <code>/mnt/</code>)</td>
+            </tr>
+            <tr>
+              <td>Permissions refusées</td>
+              <td>Lancez en admin (<code>sudo</code> sous Linux/macOS, "Exécuter en tant qu'admin" sous Windows)</td>
+            </tr>
+            <tr>
+              <td>Fichiers verrouillés</td>
+              <td>Utilisez <code>robocopy /B</code> (Windows) ou <code>rsync</code> (Linux/macOS)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3><i class="fas fa-code-branch"></i> Alternative Avancée (Python Cross-OS)</h3>
+        <div class="code-header">
+          <span>backup.py</span>
+          <button class="copy-btn"><i class="far fa-copy"></i> Copier</button>
+        </div>
+        <pre><code>import os, shutil, datetime
+usb_path = os.path.abspath(os.path.join(os.path.dirname(__file__)))
+backup_dir = os.path.join(usb_path, f"Docs_Backup_{os.uname().nodename}_{datetime.datetime.now().strftime('%Y-%m-%d')}")
+os.makedirs(backup_dir, exist_ok=True)
+shutil.copytree(os.path.expanduser("~/Documents"), os.path.join(backup_dir, "Documents"), dirs_exist_ok=True)</code></pre>
+        
+        <div class="note">
+          <p><strong><i class="fas fa-flask"></i> Test recommandé :</strong> Essayez d'abord sur une machine virtuelle avant de déployer en production.</p>
+        </div>
+      </section>
+    </main>
+
+    <section class="contact-section">
+      <h2><i class="fas fa-envelope"></i> Contact</h2>
+      <div class="contact-links">
+        <a href="mailto:coulzak14@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://wa.me/2250507647326"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://github.com/hack1-z"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.youtube.com/channel/UCgE8UntVeFC8nlrFlvt9Lvw"><i class="fab fa-youtube"></i> YouTube</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Pentest & Sauvegarde Automatique | Tous droits réservés</p>
+  </footer>
+
+  <script>
+    // Gestion des onglets OS
+    document.querySelectorAll('.os-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const os = tab.dataset.os;
+        
+        // Mise à jour des onglets
+        document.querySelectorAll('.os-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        // Mise à jour du contenu
+        document.querySelectorAll('.os-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        document.getElementById(`${os}-content`).classList.add('active');
+      });
+    });
+
+    // Fonction copier dans le presse-papier
+    document.querySelectorAll('.copy-btn').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const codeBlock = button.parentElement.nextElementSibling;
+        if (!codeBlock) return;
+        
+        const text = codeBlock.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          const originalText = button.innerHTML;
+          button.innerHTML = '<i class="fas fa-check"></i> Copié !';
+          button.classList.add('copied');
+          
+          setTimeout(() => {
+            button.innerHTML = originalText;
+            button.classList.remove('copied');
+          }, 2000);
+        }).catch(err => {
+          console.error('Erreur de copie :', err);
+          button.innerHTML = '<i class="fas fa-times"></i> Erreur';
+          setTimeout(() => {
+            button.innerHTML = '<i class="far fa-copy"></i> Copier';
+          }, 2000);
+        });
+      });
+    });
+
+    // Smooth scrolling pour les ancres
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coulibaly Cayeniga Anthelme Zakaria - Portfolio</title>
+  
+
+
+  <!-- Styles améliorés -->
+  <style>
+    :root {
+      --primary-color: #1a237e;
+      --secondary-color: #4CAF50;
+      --accent-color: #FFC107;
+      --dark-bg: #1e1e1e; /* Fond allégé */
+      --light-text: #FFFFFF;
+      --dark-text: #212121;
+      --section-spacing: 4rem;
+      --transition-speed: 0.3s;
+    }
+
+    /* Désactivation de la sélection de texte */
+    body, html {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.8;
+      color: var(--light-text);
+      background-color: var(--dark-bg);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #0d47a1 100%);
+      padding: 4rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin: 0;
+      color: var(--light-text);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      color: var(--accent-color);
+      margin: 1rem 0;
+    }
+
+    section {
+      padding: var(--section-spacing) 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .section-title::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 5px;
+      height: 80%;
+      background: var(--accent-color);
+    }
+
+    /* Grilles pour les cartes et médias */
+    .card-grid,
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card,
+    .media-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card:hover,
+    .media-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .certification-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      background: var(--secondary-color);
+      color: var(--dark-text);
+      margin: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .impact-number {
+      font-size: 3rem;
+      color: var(--accent-color);
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+
+    .engagement-card {
+      background: linear-gradient(45deg, var(--primary-color), #1976D2);
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+    }
+
+    .skill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill-item {
+      padding: 0.8rem 1.5rem;
+      background: rgba(76, 175, 80, 0.1);
+      border-radius: 25px;
+      border: 1px solid var(--secondary-color);
+      font-size: 0.9rem;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .contact-links a {
+      color: var(--light-text);
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      background: var(--primary-color);
+      transition: background var(--transition-speed) ease, transform var(--transition-speed) ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-links a:hover,
+    .contact-links a:focus {
+      background: var(--secondary-color);
+      transform: translateY(-3px);
+      outline: none;
+    }
+
+    /* Logos partenaires */
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+      padding: 1rem;
+      background: rgba(11, 74, 146, 0.05);
+      border-radius: 15px;
+    }
+
+    .partner-logo {
+      max-width: 100%;
+      height: auto;
+      filter: grayscale(100%) brightness(150%);
+      transition: transform var(--transition-speed) ease, filter var(--transition-speed) ease;
+      padding: 0.5rem;
+    }
+
+    .partner-logo:hover,
+    .partner-logo:focus {
+      filter: grayscale(0%) brightness(100%);
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Articles */
+    .articles-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .article-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform var(--transition-speed) ease;
+    }
+
+    .article-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .article-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .article-content {
+      padding: 1.5rem;
+    }
+
+    .read-more {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: var(--secondary-color);
+      color: var(--dark-text);
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    /* Simulation de hacking */
+    .hack-terminal {
+      background: #000;
+      border-radius: 8px;
+      margin: 2rem 0;
+      overflow: hidden;
+      border: 1px solid #00ff0033;
+      box-shadow: 0 0 30px #00ff0022;
+    }
+    .terminal-header {
+      background: #1a1a1a;
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .terminal-controls span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+    .terminal-title {
+      color: #00ff00;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+    .terminal-content {
+      padding: 1.5rem;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      min-height: 300px;
+      position: relative;
+    }
+    .terminal-content p {
+      margin: 0.5rem 0;
+      opacity: 0;
+      animation: terminal-typing 0.5s forwards;
+    }
+    @keyframes terminal-typing {
+      to { opacity: 1; }
+    }
+    .loading::after {
+      content: "...";
+      animation: loading-dots 1.5s infinite;
+    }
+    @keyframes loading-dots {
+      0%, 20% { content: "."; }
+      40% { content: ".."; }
+      60% { content: "..."; }
+      80%, 100% { content: " "; }
+    }
+    .progress-bar {
+      width: 100%;
+      height: 20px;
+      background: #002200;
+      border-radius: 10px;
+      margin: 1rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .progress {
+      width: 0%;
+      height: 100%;
+      background: #00ff00;
+      border-radius: 10px;
+      transition: width 3s ease-in-out;
+    }
+    .percentage {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #000;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+    .success {
+      color: #00ff00;
+      animation: glitch-text 0.3s infinite;
+    }
+    .blink {
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    @keyframes glitch-text {
+      0% { text-shadow: 2px 2px #ff00ff; }
+      50% { text-shadow: -2px -2px #00ffff; }
+      100% { text-shadow: 2px 2px #ff00ff; }
+    }
+    .disclaimer {
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    /* Section Plateformes de Certifications (liste) */
+    #certifications {
+      padding: var(--section-spacing) 0;
+    }
+    #certifications h2.section-title {
+      margin-bottom: 1.5rem;
+    }
+    .cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .cert-item {
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+      min-width: 120px;
+    }
+    .cert-unicef { background-color: #007BFF; }       /* Bleu pour UNICEF */
+    .cert-cisco { background-color: #17a2b8; }         /* Bleu-vert pour Cisco */
+    .cert-yoma { background-color: #fd7e14; }          /* Orange pour YOMA Africa */
+    .cert-hp { background-color: #5bc0de; }            /* Bleu clair pour HP */
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      .card-grid,
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-links {
+        flex-direction: column;
+      }
+      .cert-list {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body oncontextmenu="return false;">
+  <!-- Début du portfolio -->
+  <header>
+    <div class="container header-content">
+      <h1>Coulibaly Cayeniga Anthelme Zakaria</h1>
+      <p class="tagline">Expert en Cybersécurité &amp; Leader Communautaire</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Section Présentation -->
+    <section id="presentation">
+      <h2 class="section-title">Profil</h2>
+      <div class="card">
+        <p>Étudiant en <strong>Réseaux Informatiques &amp; Télécommunications</strong> à l'Université de Technologies d'Abidjan UTA (Côte d'Ivoire). Passionné par la cybersécurité, l'autonomisation des jeunes et l'innovation sociale, je mets mes compétences techniques et pédagogiques au service de projets transformateurs et innovateurs.</p>
+      </div>
+    </section>
+
+    <!-- Section Formations -->
+    <section id="formations">
+      <h2 class="section-title">Parcours Académique</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>🎓 Formation Principale</h3>
+          <p><strong>Réseaux Informatiques &amp; Télécommunications</strong><br>
+          Université de Technologies d'Abidjan UTA<br>
+          2024 - En cours</p>
+        </div>
+        <div class="card">
+          <h3>📜 Certifications</h3>
+          <p><strong>32 Certifications</strong> obtenues via :<br>
+          <span class="certification-badge">YOMA</span>
+          <span class="certification-badge">UNICEF</span>
+          <span class="certification-badge">CISCO</span>
+          <span class="certification-badge">HP</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Engagements -->
+    <section id="engagements">
+      <h2 class="section-title">Engagements Communautaires</h2>
+      <div class="engagement-card">
+        <h3>👥 Ambassadeur YOMA - UNICEF CIV</h3>
+        <p>Promotion de l'employabilité des jeunes à travers des formations et opportunités numériques</p>
+      </div>
+      <div class="engagement-card">
+        <h3>💡 Ambassadeur/Assistant Technique - The Way Out</h3>
+        <p>Accompagnement technique et stratégique pour des projets sociaux innovants</p>
+      </div>
+    </section>
+
+    <!-- Section Expertises -->
+    <section id="expertises">
+      <h2 class="section-title">Expertises</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>🛡️ Cybersécurité</h3>
+          <ul>
+            <li>Ethical Hacking</li>
+            <li>Sensibilisation aux risques</li>
+            <li>Protection des données</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>💼 Insertion Professionnelle</h3>
+          <ul>
+            <li>Rédaction de CV</li>
+            <li>Techniques de recherche d'emploi</li>
+            <li>Préparation aux entretiens</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Compétences -->
+    <section id="competences">
+      <h2 class="section-title">Compétences</h2>
+      <div class="skill-cloud">
+        <span class="skill-item">Cybersécurité</span>
+        <span class="skill-item">Cloud Computing</span>
+        <span class="skill-item">Blockchain</span>
+        <span class="skill-item">IA</span>
+        <span class="skill-item">Leadership</span>
+        <span class="skill-item">Gestion de projet</span>
+        <span class="skill-item">Communication digitale</span>
+        <span class="skill-item">Développement Web</span>
+        <span class="skill-item">Réseaux</span>
+        <span class="skill-item">Systèmes d'information</span>
+        <span class="skill-item">Analyse de données</span>
+        <span class="skill-item">Sensibilisation</span>
+        <span class="skill-item">Formation</span>
+        <span class="skill-item">Mentorat</span>
+      </div>
+    </section>
+
+    <!-- Section Hack-Simulation (conservée telle quelle) -->
+    <section id="hack-simulation">
+      <h2 class="section-title">Labo Sécurité: Hacker-Pentester</h2>
+      <div class="hack-terminal">
+        <div class="terminal-header">
+          <div class="terminal-controls">
+            <span class="red"></span>
+            <span class="yellow"></span>
+            <span class="green"></span>
+          </div>
+          <span class="terminal-title">root@hacker_it-sec:~</span>
+        </div>
+        <div class="terminal-content" id="hack-output">
+          <p>> Initializing penetration test...</p>
+          <p>> Scanning network... <span class="loading"></span></p>
+          <p class="scan-results">[+] 3 vulnerable endpoints found</p>
+          <p>> Launching brute force attack...</p>
+          <div class="progress-bar">
+            <div class="progress"></div>
+            <span class="percentage">0%</span>
+          </div>
+          <p class="success">[SUCCESS] Credentials captured: admin | ********</p>
+          <p>> Installing backdoor... <span class="blink">▌</span></p>
+        </div>
+      </div>
+      <div class="disclaimer">
+        🛡️ Simulation à des fins éducatives - Toutes les activités sont éthiques et légales
+      </div>
+    </section>
+
+    <!-- Nouvelle section : Plateformes de Certifications (liste) -->
+    <section id="certifications">
+      <h2 class="section-title">Plateformes de Certifications</h2>
+      <div class="cert-list">
+        <div class="cert-item cert-yoma">YOMA Africa</div>
+        <div class="cert-item cert-unicef">UNICEF</div>
+        <div class="cert-item cert-cisco">CISCO</div>
+        <div class="cert-item cert-hp">HP</div>
+      </div>
+    </section>
+
+    <!-- Section Articles -->
+    <section id="articles">
+      <h2 class="section-title">Mes Articles</h2>
+      <div class="articles-grid">
+        <a href="article 1.html" target="_blank" class="article-card">
+          <img src="articles/cyber-securite.jpg" alt="Cybersécurité" class="article-image">
+          <div class="article-content">
+            <h3>Les enjeux de la cybersécurité moderne</h3>
+            <p>Analyse approfondie des nouvelles menaces informatiques...</p>
+            <div class="read-more">Lire l'article</div>
+          </div>
+        </a>
+        <a href="article 2.html" target="_blank" class="article-card">
+          <img src="articles/ia-avenir.jpg" alt="IA" class="article-image">
+          <div class="article-content">
+            <h3>L'IA révolutionne la protection des données</h3>
+            <p>Comment l'intelligence artificielle transforme la sécurité...</p>
+            <div class="read-more">Lire l'article</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section Vidéos -->
+    <section id="videos">
+      <h2 class="section-title">Mes Vidéos</h2>
+      <div class="media-grid">
+        <div class="media-item">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/exempleID" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-links">
+        <a href="mailto:coulzak14@gmail.com">📧 Email</a>
+        <a href="https://wa.me/2250507647326">📱 WhatsApp</a>
+        <a href="https://github.com/hack1-z">💻 GitHub</a>
+        <a href="https://www.youtube.com/channel/UCgE8UntVeFC8nlrFlvt9Lvw">📹 YouTube</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts pour animations et simulation -->
+  <script>
+    // Désactivation du clic droit
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // Animation au défilement pour cartes et médias
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    });
+    document.querySelectorAll('.card, .media-item').forEach(item => {
+      item.style.opacity = 0;
+      item.style.transform = 'translateY(50px)';
+      item.style.transition = 'all 0.8s ease-out';
+      observer.observe(item);
+    });
+
+    // Simulation de hacking
+    document.addEventListener('DOMContentLoaded', () => {
+      const terminal = document.getElementById('hack-output');
+      const progress = document.querySelector('.progress');
+      const percentage = document.querySelector('.percentage');
+
+      // Simulation d'attaque
+      setTimeout(() => {
+        progress.style.width = '100%';
+        let percent = 0;
+        const interval = setInterval(() => {
+          percentage.textContent = `${percent++}%`;
+          if (percent > 100) clearInterval(interval);
+        }, 30);
+      }, 2000);
+
+      // Génération de commandes aléatoires
+      const commands = [
+        'nmap -sS 192.168.1.0/24',
+        'hydra -L users.txt -P passwords.txt ssh://target',
+        'sqlmap -u "http://test.com?id=1" --dbs',
+        'msfconsole -q -x "use exploit/windows/smb/eternalblue"'
+      ];
+      let delay = 4000;
+      commands.forEach((cmd) => {
+        setTimeout(() => {
+          const p = document.createElement('p');
+          p.textContent = `> ${cmd}`;
+          p.style.opacity = '0';
+          terminal.appendChild(p);
+          setTimeout(() => p.style.opacity = '1', 100);
+        }, delay);
+        delay += 2000;
+      });
+    });
+
+    // Animation pour logos partenaires
+    document.querySelectorAll('.partner-logo').forEach(logo => {
+      logo.style.opacity = '0';
+      logo.style.transform = 'scale(0.8)';
+      const observerLogo = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            logo.style.opacity = '1';
+            logo.style.transform = 'scale(1)';
+            logo.style.transition = 'all 0.5s ease';
+          }
+        });
+      });
+      observerLogo.observe(logo);
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+Expériences Naruto ! https://g.co/kgs/V13rvey
