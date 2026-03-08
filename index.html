@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cayeniga Anthelme Zakaria Coulibaly — Analyste Cybersécurité Junior</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --surface2: #f0ede8;
+      --accent: #1a6b5a;
+      --accent2: #2563eb;
+      --accent3: #d97706;
+      --danger: #dc2626;
+      --text: #1c1917;
+      --muted: #6b6560;
+      --border: rgba(28,25,23,0.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CURSOR */
+    .cursor {
+      width: 12px; height: 12px;
+      background: var(--accent); border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.1s;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--accent); border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transition: all 0.18s ease; opacity: 0.5;
+    }
+    @media (hover: none) { .cursor, .cursor-ring { display: none; } body { cursor: auto; } }
+
+    body::before { display: none; }
+    body::after { display: none; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 60px;
+      background: rgba(250,249,247,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-weight: 800; font-size: 1.1rem; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta { font-family: 'DM Mono', monospace; font-size: 0.7rem; padding: 8px 16px; border: 1px solid var(--accent); color: var(--accent); background: transparent; cursor: pointer; letter-spacing: 1px; transition: all 0.2s; text-decoration: none; }
+    .nav-cta:hover { background: var(--accent); color: var(--bg); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--accent); transition: all 0.3s; }
+    .mobile-menu { display: none; position: fixed; top: 57px; left: 0; right: 0; background: rgba(250,249,247,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 99; padding: 20px 24px; flex-direction: column; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--muted); text-decoration: none; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.05); letter-spacing: 1px; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: 1fr auto;
+      align-items: center;
+      padding: 110px 60px 80px;
+      position: relative; z-index: 2; overflow: hidden;
+      column-gap: 48px;
+    }
+    .hero-glow1 { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(0,245,160,0.08) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; animation: pulseGlow 6s ease-in-out infinite; }
+    .hero-glow2 { position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(0,195,255,0.06) 0%, transparent 70%); bottom: 0; left: 200px; pointer-events: none; animation: pulseGlow 8s ease-in-out infinite reverse; }
+    @keyframes pulseGlow { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.15);opacity:0.7;} }
+
+    .hero-content { grid-column: 1; grid-row: 1; position: relative; z-index: 2; }
+
+    .status-badge { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--accent); background: rgba(0,245,160,0.08); border: 1px solid rgba(0,245,160,0.2); padding: 6px 12px; margin-bottom: 18px; letter-spacing: 1px; animation: fadeUp 0.8s ease both; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: blink 1.5s ease-in-out infinite; }
+
+    .hero-job-title { display: inline-flex; align-items: center; gap: 10px; font-family: 'DM Mono', monospace; font-size: 0.73rem; background: linear-gradient(135deg, rgba(0,195,255,0.12), rgba(0,245,160,0.07)); border: 1px solid rgba(0,195,255,0.3); padding: 10px 18px; margin-bottom: 20px; color: var(--accent2); letter-spacing: 1px; animation: fadeUp 0.8s 0.05s ease both; }
+
+    .hero-tag { font-family: 'DM Mono', monospace; font-size: 0.67rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; animation: fadeUp 0.8s 0.08s ease both; flex-wrap: wrap; }
+    .hero-tag::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--muted); flex-shrink: 0; }
+
+    .hero-name {
+      font-family: 'DM Serif Display', serif; font-weight: 800;
+      font-size: clamp(2.6rem, 5vw, 5.2rem);
+      line-height: 1.0; letter-spacing: -1px; margin-bottom: 16px;
+      animation: fadeUp 0.8s 0.12s ease both;
+      word-break: break-word;
+    }
+    .hero-name span { color: var(--accent); }
+
+    .hero-slogan { font-family: 'DM Mono', monospace; font-size: clamp(0.75rem, 1.5vw, 0.98rem); color: var(--accent2); font-style: italic; margin-bottom: 18px; animation: fadeUp 0.8s 0.2s ease both; border-left: 3px solid var(--accent2); padding-left: 14px; }
+
+    .hero-desc { font-size: clamp(0.84rem, 1.4vw, 0.95rem); color: var(--muted); line-height: 1.8; max-width: 560px; margin-bottom: 28px; animation: fadeUp 0.8s 0.28s ease both; }
+
+    .avail-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; animation: fadeUp 0.8s 0.32s ease both; }
+    .avail-chip { font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 5px 12px; letter-spacing: 1px; border-radius: 2px; }
+    .avail-chip.green { background: rgba(0,245,160,0.1); border: 1px solid rgba(0,245,160,0.3); color: var(--accent); }
+    .avail-chip.blue { background: rgba(0,195,255,0.1); border: 1px solid rgba(0,195,255,0.3); color: var(--accent2); }
+    .avail-chip.orange { background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.3); color: var(--accent3); }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp 0.8s 0.38s ease both; }
+
+    .btn-primary { padding: 13px 28px; background: var(--accent); color: var(--bg); font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,245,160,0.4); }
+    .btn-outline { padding: 13px 28px; background: transparent; color: var(--text); font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 1px; border: 1px solid var(--border); cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-stats { grid-column: 2; grid-row: 1; display: flex; flex-direction: column; gap: 28px; animation: fadeUp 0.8s 0.5s ease both; align-self: center; }
+    .stat-item { text-align: right; }
+    .stat-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .stat-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+    .scroll-indicator { grid-column: 1 / -1; grid-row: 2; display: flex; align-items: center; gap: 12px; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 2px; animation: fadeUp 1s 0.8s ease both; padding-top: 24px; }
+    .scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, transparent, var(--accent)); animation: scrollAnim 2s ease-in-out infinite; }
+    @keyframes scrollAnim { 0%,100%{transform:scaleY(0);transform-origin:top;} 50%{transform:scaleY(1);transform-origin:top;} }
+
+    /* SECTIONS */
+    section { padding: 90px 60px; position: relative; z-index: 2; }
+    .section-label { font-family: 'DM Mono', monospace; font-size: 0.67rem; color: var(--accent); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 12px; }
+    .section-label::after { content: ''; flex: 1; max-width: 50px; height: 1px; background: var(--accent); }
+    .section-title { font-family: 'DM Serif Display', serif; font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.1; margin-bottom: 48px; }
+
+    /* ABOUT */
+    #about { background: var(--surface); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .about-text p { color: var(--muted); line-height: 1.9; font-size: 0.92rem; margin-bottom: 16px; }
+    .about-text p strong { color: var(--text); }
+    .about-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .badge { font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 5px 12px; background: rgba(0,245,160,0.08); border: 1px solid rgba(0,245,160,0.2); color: var(--accent); letter-spacing: 1px; }
+    .about-info-card { background: var(--surface2); border: 1px solid var(--border); padding: 26px; position: relative; overflow: hidden; margin-bottom: 18px; }
+    .about-info-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--accent), var(--accent2)); }
+    .info-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.04); gap: 12px; }
+    .info-row:last-child { border-bottom: none; }
+    .info-key { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; flex-shrink: 0; }
+    .info-val { font-size: 0.82rem; color: var(--text); text-align: right; }
+    .info-val a { color: var(--accent); text-decoration: none; }
+    .info-val a:hover { text-decoration: underline; }
+
+    /* CAREER TRACK */
+    .goal-track { background: var(--bg); border: 1px solid rgba(0,195,255,0.2); padding: 22px; margin-bottom: 18px; }
+    .goal-track-title { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--accent2); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
+    .track-step { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .track-step:last-child { border-bottom: none; }
+    .track-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .track-dot.done { background: var(--accent); box-shadow: 0 0 8px rgba(0,245,160,0.5); }
+    .track-dot.current { background: var(--accent2); box-shadow: 0 0 8px rgba(0,195,255,0.5); animation: blink 1.5s infinite; }
+    .track-dot.future { background: transparent; border: 1px solid var(--muted); }
+    .track-label { font-size: 0.8rem; color: var(--text); flex: 1; }
+    .track-label.current { color: var(--accent2); font-weight: 600; }
+    .track-label.future { color: var(--muted); }
+    .track-tag { font-family: 'DM Mono', monospace; font-size: 0.56rem; padding: 2px 8px; border-radius: 2px; white-space: nowrap; }
+    .track-tag.done { background: rgba(0,245,160,0.1); color: var(--accent); }
+    .track-tag.current { background: rgba(0,195,255,0.1); color: var(--accent2); }
+    .track-tag.future { background: rgba(255,255,255,0.04); color: var(--muted); }
+
+    /* TERMINAL SMALL */
+    .terminal-card { background: #050d1a; border: 1px solid rgba(0,245,160,0.2); border-radius: 4px; overflow: hidden; }
+    .terminal-bar { background: #0c1828; padding: 10px 14px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(0,245,160,0.1); }
+    .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .t-dot.red { background: #ff5f56; }
+    .t-dot.yellow { background: #ffbd2e; }
+    .t-dot.green { background: #27c93f; }
+    .terminal-body-sm { padding: 18px 20px; font-family: 'DM Mono', monospace; font-size: 0.7rem; line-height: 1.9; overflow-x: auto; }
+
+    /* BIG TERMINAL */
+    #terminal-section { background: var(--bg); }
+    .terminal-big { background: #050d1a; border: 1px solid rgba(0,245,160,0.25); border-radius: 6px; overflow: hidden; max-width: 900px; margin: 0 auto; box-shadow: 0 0 60px rgba(0,245,160,0.05); }
+    .terminal-topbar { background: #0c1828; padding: 12px 20px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(0,245,160,0.1); flex-wrap: wrap; row-gap: 8px; }
+    .terminal-title { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #4a6080; margin-left: 10px; letter-spacing: 1px; }
+    .terminal-tabs { display: flex; gap: 0; margin-left: auto; flex-wrap: wrap; }
+    .ttab { font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 4px 14px; color: var(--muted); cursor: pointer; border: none; border-bottom: 2px solid transparent; background: none; transition: all 0.2s; }
+    .ttab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .terminal-content { padding: 26px 30px; font-family: 'DM Mono', monospace; font-size: 0.76rem; line-height: 1.9; min-height: 340px; overflow-x: auto; }
+    .t-line { white-space: pre-wrap; word-break: break-all; }
+    .t-prompt { color: var(--accent); }
+    .t-cmd { color: var(--text); }
+    .t-out { color: var(--muted); }
+    .t-green { color: var(--accent); }
+    .t-blue { color: var(--accent2); }
+    .t-orange { color: var(--accent3); }
+    .t-red { color: var(--danger); }
+    .t-dim { color: #3a4f6a; }
+    .t-tab { display: none; }
+    .t-tab.active { display: block; }
+    .typed-cursor { display: inline-block; width: 8px; height: 0.9em; background: var(--accent); vertical-align: -1px; animation: blink 0.8s step-end infinite; }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+
+    /* SKILLS */
+    #skills { background: var(--surface); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .skill-card { background: var(--bg); border: 1px solid var(--border); padding: 26px; transition: all 0.3s; position: relative; overflow: hidden; }
+    .skill-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,245,160,0.04) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .skill-card:hover::after { opacity: 1; }
+    .skill-icon { font-size: 1.7rem; margin-bottom: 12px; }
+    .skill-card-title { font-family: 'DM Serif Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 12px; color: var(--text); }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tag { font-family: 'DM Mono', monospace; font-size: 0.58rem; padding: 3px 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--muted); }
+
+    /* PROJECTS */
+    #projects { background: var(--bg); }
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .project-card { background: var(--surface); border: 1px solid var(--border); padding: 28px; transition: all 0.3s; }
+    .project-card:hover { border-color: var(--accent2); }
+    .project-num { font-family: 'DM Serif Display', serif; font-size: 2.6rem; font-weight: 800; color: rgba(0,245,160,0.07); line-height: 1; margin-bottom: 12px; }
+    .project-title { font-family: 'DM Serif Display', serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; }
+    .project-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tech-tag { font-family: 'DM Mono', monospace; font-size: 0.58rem; padding: 3px 8px; background: rgba(0,195,255,0.08); border: 1px solid rgba(0,195,255,0.2); color: var(--accent2); }
+
+    /* CERTIFICATIONS */
+    #certifications { background: var(--surface); }
+    .certs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 36px; flex-wrap: wrap; gap: 16px; }
+    .cert-count { font-family: 'DM Serif Display', serif; font-size: 4.5rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .cert-count-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 2px; }
+    .certs-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .cert-item { background: var(--bg); border: 1px solid var(--border); padding: 14px 18px; display: flex; justify-content: space-between; align-items: flex-start; transition: border-color 0.2s; gap: 10px; }
+    .cert-item:hover { border-color: var(--accent3); }
+    .cert-name { font-size: 0.8rem; font-weight: 500; }
+    .cert-date { font-family: 'DM Mono', monospace; font-size: 0.57rem; color: var(--muted); white-space: nowrap; margin-top: 2px; }
+    .cert-issuer { font-family: 'DM Mono', monospace; font-size: 0.52rem; color: var(--accent3); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+    .upcoming-certs { margin-top: 28px; padding: 22px; background: var(--bg); border: 1px dashed rgba(0,245,160,0.3); }
+    .upcoming-title { font-family: 'DM Serif Display', serif; font-weight: 700; font-size: 0.95rem; color: var(--accent); margin-bottom: 12px; }
+    .upcoming-list { display: flex; gap: 12px; flex-wrap: wrap; }
+    .upcoming-item { font-family: 'DM Mono', monospace; font-size: 0.65rem; padding: 7px 14px; border: 1px solid rgba(245,166,35,0.4); color: var(--accent3); }
+
+    /* ENGAGEMENT */
+    #engagement { background: var(--bg); }
+    .engage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .engage-card { background: var(--surface); border: 1px solid var(--border); padding: 26px; transition: all 0.3s; }
+    .engage-card:hover { border-color: var(--danger); transform: translateY(-4px); }
+    .engage-org { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--danger); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 9px; }
+    .engage-role { font-family: 'DM Serif Display', serif; font-weight: 700; font-size: 0.92rem; margin-bottom: 9px; }
+    .engage-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
+
+    /* CV BANNER */
+    #cv-section { background: linear-gradient(135deg, #ecfdf5 0%, #eff6ff 60%, #fefce8 100%); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); text-align: center; padding: 90px 60px; position: relative; overflow: hidden; }
+    .cv-bg-pattern { position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(0,245,160,0.02) 40px, rgba(0,245,160,0.02) 80px); pointer-events: none; }
+    .cv-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,245,160,0.07) 0%, transparent 65%); pointer-events: none; }
+    .cv-content { position: relative; z-index: 2; }
+    .cv-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; }
+    .cv-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 14px; line-height: 1.1; }
+    .cv-slogan { font-family: 'DM Mono', monospace; font-size: clamp(0.78rem, 1.6vw, 1.05rem); color: var(--accent); font-style: italic; margin-bottom: 14px; padding: 10px 20px; border: 1px solid rgba(0,245,160,0.2); display: inline-block; background: rgba(0,245,160,0.04); }
+    .cv-tagline { color: var(--muted); font-size: 0.92rem; margin-bottom: 40px; line-height: 1.8; }
+    .cv-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 52px; }
+    .cv-stripe { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; border-top: 1px solid var(--border); padding-top: 40px; }
+    .cv-fact { text-align: center; }
+    .cv-fact-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--accent2); line-height: 1; }
+    .cv-fact-label { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+
+    /* CONTACT */
+    #contact { background: var(--surface); }
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-left p { color: var(--muted); line-height: 1.9; margin-bottom: 26px; font-size: 0.9rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 10px; }
+    .contact-link { display: flex; align-items: center; gap: 14px; padding: 13px 16px; background: var(--bg); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.84rem; transition: all 0.2s; }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-link-icon { font-size: 1.1rem; width: 28px; text-align: center; flex-shrink: 0; }
+    .contact-link-label { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: var(--muted); display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 1px; }
+    .contact-right { background: var(--bg); border: 1px solid var(--border); padding: 36px; }
+    .form-group { margin-bottom: 18px; }
+    .form-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 6px; }
+    .form-input, .form-textarea { width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 11px 14px; font-family: 'DM Sans', sans-serif; font-size: 0.87rem; outline: none; transition: border-color 0.2s; }
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+    .form-textarea { min-height: 100px; resize: vertical; }
+
+    /* FOOTER */
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; flex-wrap: wrap; gap: 14px; }
+    .footer-logo { font-family: 'DM Serif Display', serif; font-weight: 800; font-size: 0.9rem; color: var(--accent); letter-spacing: 2px; }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); text-align: center; }
+    .footer-socials { display: flex; gap: 18px; flex-wrap: wrap; }
+    .footer-social { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-social:hover { color: var(--accent); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
+    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1200px) {
+      nav { padding: 14px 32px; }
+      section { padding: 80px 40px; }
+      #hero { padding: 105px 40px 70px; column-gap: 28px; }
+      .hero-name { font-size: clamp(2.2rem, 4.5vw, 4rem); }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .engage-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      nav { padding: 14px 22px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 64px 22px; }
+      #hero { padding: 90px 22px 56px; grid-template-columns: 1fr; grid-template-rows: auto auto auto; column-gap: 0; }
+      .hero-content { grid-column: 1; grid-row: 1; }
+      .hero-stats { grid-column: 1; grid-row: 2; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; gap: 20px 36px; margin-top: 32px; }
+      .stat-item { text-align: left; }
+      .scroll-indicator { grid-column: 1; grid-row: 3; }
+      .hero-name { font-size: clamp(2.2rem, 7.5vw, 3.6rem); }
+      .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid, .certs-list { grid-template-columns: 1fr; }
+      .engage-grid { grid-template-columns: repeat(2, 1fr); }
+      .terminal-content { padding: 18px 16px; font-size: 0.7rem; }
+      footer { padding: 26px 22px; justify-content: center; text-align: center; }
+      .cv-stripe { gap: 24px; }
+    }
+    @media (max-width: 560px) {
+      section { padding: 52px 16px; }
+      #hero { padding: 80px 16px 44px; }
+      .hero-name { font-size: clamp(1.85rem, 9vw, 2.9rem); letter-spacing: -0.5px; }
+      .hero-slogan { font-size: 0.7rem; }
+      .hero-job-title { font-size: 0.64rem; padding: 8px 12px; }
+      .status-badge { font-size: 0.57rem; }
+      .avail-chip { font-size: 0.54rem; padding: 4px 9px; }
+      .hero-stats { gap: 14px 22px; }
+      .stat-num { font-size: 1.7rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .engage-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: clamp(1.5rem, 7vw, 2rem); }
+      .terminal-content { padding: 14px 12px; font-size: 0.63rem; min-height: 260px; }
+      .terminal-topbar { padding: 8px 12px; }
+      .ttab { font-size: 0.52rem; padding: 3px 8px; }
+      .cert-count { font-size: 3rem; }
+      .cv-title { font-size: clamp(1.7rem, 8vw, 2.6rem); }
+      .cv-actions { flex-direction: column; align-items: center; }
+      .cv-slogan { font-size: 0.72rem; padding: 9px 12px; }
+      .contact-right { padding: 20px 16px; }
+      footer { flex-direction: column; gap: 12px; }
+    }
+    /* Landscape mobile */
+    @media (max-width: 900px) and (orientation: landscape) {
+      #hero { min-height: auto; padding: 80px 32px 36px; grid-template-columns: 1fr auto; grid-template-rows: 1fr auto; column-gap: 32px; }
+      .hero-content { grid-column: 1; grid-row: 1; }
+      .hero-stats { grid-column: 2; grid-row: 1; flex-direction: column; align-self: center; margin-top: 0; gap: 18px; }
+      .stat-item { text-align: right; }
+      .scroll-indicator { grid-column: 1 / -1; grid-row: 2; }
+      .hero-name { font-size: clamp(1.8rem, 4.5vw, 2.8rem); }
+    }
+      /* === FINITIONS VISUELLES === */
+    .btn-primary { clip-path: none; border-radius: 8px; color: #ffffff; }
+    .btn-outline { border-radius: 8px; }
+    .avail-chip { border-radius: 100px; }
+    .badge { border-radius: 100px; }
+    .about-info-card { border-radius: 12px; }
+    .skill-card { border-radius: 12px; }
+    .project-card { border-radius: 12px; }
+    .cert-item { border-radius: 8px; }
+    .engage-card { border-radius: 12px; }
+    .contact-link { border-radius: 10px; }
+    .contact-right { border-radius: 14px; }
+    .form-input, .form-textarea { border-radius: 8px; }
+    .nav-cta { border-radius: 8px; }
+    footer { background: #1c1917; }
+    .footer-logo { color: #6ee7b7; }
+    .footer-copy { color: #78716c; }
+    .footer-social { color: #78716c; }
+    .footer-social:hover { color: #6ee7b7; }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">CCAZ.SEC</div>
+  <ul class="nav-links">
+    <li><a href="#about">À Propos</a></li>
+    <li><a href="#terminal-section">Terminal</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#engagement">Engagement</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:cayeniga.anthelme@email.com" class="nav-cta">Me Contacter</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMob()">À Propos</a>
+  <a href="#terminal-section" onclick="closeMob()">Terminal</a>
+  <a href="#skills" onclick="closeMob()">Compétences</a>
+  <a href="#projects" onclick="closeMob()">Projets</a>
+  <a href="#certifications" onclick="closeMob()">Certifications</a>
+  <a href="#engagement" onclick="closeMob()">Engagement</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow1"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-content">
+    <div class="status-badge">
+      <span class="status-dot"></span>
+      Ouvert aux opportunités · Côte d'Ivoire &amp; International
+    </div>
+
+    <div class="hero-job-title">
+      🔵&nbsp;&nbsp;Analyste Cybersécurité Junior - SOC / Blue Team
+    </div>
+
+    <div class="hero-tag">Ethical Hacker · Formateur · Ambassadeur YOMA</div>
+
+    <h1 class="hero-name">
+      <span>Cayeniga Anthelme Zakaria Coulibaly</span>
+    </h1>
+
+    <p class="hero-slogan">
+      "Protéger le numérique, Éduquer les esprits, Construire l'Afrique de demain."
+    </p>
+
+    <p class="hero-desc">
+      Analyste Cybersécurité Junior orienté <strong style="color:var(--accent2)">Blue Team &amp; SOC</strong>, spécialisé en détection des menaces, SIEM et réponse aux incidents. Objectif : devenir <strong style="color:var(--accent)">Expert en Cybersécurité</strong> et sécuriser le numérique africain.
+    </p>
+
+    <div class="avail-chips">
+      <span class="avail-chip green">✓ Emploi</span>
+      <span class="avail-chip blue">✓ Stage</span>
+      <span class="avail-chip orange">✓ CI &amp; International</span>
+    </div>
+
+    <div class="hero-actions">
+      <a href="mailto:cayeniga.anthelme@email.com?subject=Demande%20de%20CV%20-%20Analyste%20Cybersécurité%20Junior&body=Bonjour%20Cayeniga%2C%0A%0AJe%20souhaite%20recevoir%20votre%20CV%20complet%20pour%20un%20poste%20d%27analyste%20cybersécurité%20junior." class="btn-primary">Demander mon CV</a>
+      <a href="#projects" class="btn-outline">Voir mes Projets</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-num">32+</div><div class="stat-label">Certifications</div></div>
+    <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">Projets Majeurs</div></div>
+    <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">Organisations</div></div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    SCROLL
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">01 — À Propos</div>
+  <h2 class="section-title">Qui suis-je ?</h2>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>Je suis <strong>Cayeniga Anthelme Zakaria Coulibaly</strong>, étudiant en Réseaux &amp; Sécurité Informatique (UVCI), à la recherche active d'un poste d'<strong>Analyste Cybersécurité Junior</strong>.</p>
+      <p>Mon cœur de métier : la <strong>Blue Team</strong> - surveiller, détecter et répondre aux incidents de sécurité. Je maîtrise les outils SIEM (Wazuh, Suricata) et les cadres GRC pour évaluer et réduire les risques. Toutes mes formations convergent vers un seul objectif : devenir <strong>Expert en Cybersécurité</strong>.</p>
+      <p>Au-delà du technique, je m'engage pour l'<strong>employabilité et des compétences des jeunes africains</strong> comme Ambassadeur YOMA-UNICEF et formateur en littératie numérique.</p>
+      <div class="about-badges">
+        <span class="badge">Blue Team</span>
+        <span class="badge">SOC Analyst</span>
+        <span class="badge">SIEM</span>
+        <span class="badge">Ethical Hacking</span>
+        <span class="badge">GRC</span>
+        <span class="badge">Formateur</span>
+        <span class="badge">UNICEF YOMA</span>
+        <span class="badge">Cloud</span>
+        <span class="badge">IA</span>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="goal-track">
+        <div class="goal-track-title">🎯 Parcours → Expert en Cybersécurité</div>
+        <div class="track-step"><div class="track-dot done"></div><span class="track-label">Formation Réseaux &amp; Cybersécurité</span><span class="track-tag done">✓ Actif</span></div>
+        <div class="track-step"><div class="track-dot current"></div><span class="track-label current">Analyste Cybersécurité Junior — SOC</span><span class="track-tag current">→ Objectif</span></div>
+        <div class="track-step"><div class="track-dot future"></div><span class="track-label future">CEH · CCNA · Security+</span><span class="track-tag future">En cours</span></div>
+        <div class="track-step"><div class="track-dot future"></div><span class="track-label future">Analyste SOC Senior</span><span class="track-tag future">Horizon 3 ans</span></div>
+        <div class="track-step"><div class="track-dot future"></div><span class="track-label future">Expert en Cybersécurité</span><span class="track-tag future">But final</span></div>
+      </div>
+      <div class="about-info-card">
+        <div class="info-row"><span class="info-key">Poste visé</span><span class="info-val" style="color:var(--accent2)">Analyste Cybersécu. Junior</span></div>
+        <div class="info-row"><span class="info-key">Disponibilité</span><span class="info-val" style="color:var(--accent)">Immédiate</span></div>
+        <div class="info-row"><span class="info-key">Localisation</span><span class="info-val">Abidjan, CI &amp; Remote</span></div>
+        <div class="info-row"><span class="info-key">Formation</span><span class="info-val">UTA · UVCI · We.Code</span></div>
+        <div class="info-row"><span class="info-key">Email</span><span class="info-val"><a href="mailto:cayeniga.anthelme@email.com">cayeniga.anthelme@email.com</a></span></div>
+        <div class="info-row"><span class="info-key">GitHub</span><span class="info-val"><a href="https://github.com/hack1-z" target="_blank">hack1-z</a></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIG INTERACTIVE TERMINAL -->
+<section id="terminal-section">
+  <div class="section-label">02 — Terminal</div>
+  <h2 class="section-title">Dans mon terminal quotidien</h2>
+
+  <div class="terminal-big fade-in">
+    <div class="terminal-topbar">
+      <span class="t-dot red"></span><span class="t-dot yellow"></span><span class="t-dot green"></span>
+      <span class="terminal-title">cayeniga@kali-linux ~ — bash</span>
+      <div class="terminal-tabs">
+        <button class="ttab active" onclick="switchTab(this,'tab-soc')">SOC / Blue Team</button>
+        <button class="ttab" onclick="switchTab(this,'tab-recon')">Recon</button>
+        <button class="ttab" onclick="switchTab(this,'tab-network')">Réseau</button>
+        <button class="ttab" onclick="switchTab(this,'tab-python')">Python</button>
+      </div>
+    </div>
+    <div class="terminal-content">
+
+      <div class="t-tab active" id="tab-soc">
+        <div class="t-line"><span class="t-dim"># ═══ SOC ANALYST — Threat Detection &amp; SIEM ═══</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@soc</span><span class="t-dim">:~$ </span><span class="t-cmd">systemctl status wazuh-agent</span></div>
+        <div class="t-line"><span class="t-green">● wazuh-agentd    Active: active (running) since 2026-03-05</span></div>
+        <div class="t-line"><span class="t-green">● wazuh-syscheckd Active: active (running)</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@soc</span><span class="t-dim">:~$ </span><span class="t-cmd">tail -f /var/ossec/logs/alerts.json | jq .</span></div>
+        <div class="t-line"><span class="t-out">{</span></div>
+        <div class="t-line"><span class="t-out">  </span><span class="t-blue">"rule"</span><span class="t-out">: { </span><span class="t-blue">"level"</span><span class="t-out">: 12, </span><span class="t-blue">"description"</span><span class="t-out">: </span><span class="t-orange">"SSH brute-force attempt"</span><span class="t-out"> },</span></div>
+        <div class="t-line"><span class="t-out">  </span><span class="t-blue">"srcip"</span><span class="t-out">: </span><span class="t-red">"185.220.101.47"</span><span class="t-out">,  </span><span class="t-blue">"attempts"</span><span class="t-out">: </span><span class="t-red">432</span></div>
+        <div class="t-line"><span class="t-out">}</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@soc</span><span class="t-dim">:~$ </span><span class="t-cmd">suricata -r capture.pcap -l /var/log/suricata/</span></div>
+        <div class="t-line"><span class="t-green">[**] ET SCAN Nmap SYN Scan detected — 192.168.1.102</span></div>
+        <div class="t-line"><span class="t-red">[**] ET MALWARE C2 Beacon Traffic — Alert level HIGH</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@soc</span><span class="t-dim">:~$ </span><span class="t-cmd">iptables -A INPUT -s 185.220.101.47 -j DROP &amp;&amp; echo "✓ IP bloquée"</span></div>
+        <div class="t-line"><span class="t-green">✓ IP bloquée — Incident logged in Chronicle</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@soc</span><span class="t-dim">:~$ </span><span class="typed-cursor"></span></div>
+      </div>
+
+      <div class="t-tab" id="tab-recon">
+        <div class="t-line"><span class="t-dim"># ═══ ETHICAL HACKING — Pentest &amp; Recon ═══</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">hecker@kali</span><span class="t-dim">:~$ </span><span class="t-cmd">nmap -sV -sC --open 192.168.1.0/24</span></div>
+        <div class="t-line"><span class="t-green">Nmap scan report for 192.168.1.1</span></div>
+        <div class="t-line"><span class="t-out">PORT     STATE  SERVICE   VERSION</span></div>
+        <div class="t-line"><span class="t-orange">22/tcp   open   ssh       OpenSSH 8.9p1</span></div>
+        <div class="t-line"><span class="t-orange">80/tcp   open   http      Apache 2.4.54</span></div>
+        <div class="t-line"><span class="t-red">443/tcp  open   https     SSL cert EXPIRED — CVE-2023-0286</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">hecker@kali</span><span class="t-dim">:~$ </span><span class="t-cmd">nikto -h http://192.168.1.1</span></div>
+        <div class="t-line"><span class="t-red">+ /admin/ : Login panel found (default creds risk)</span></div>
+        <div class="t-line"><span class="t-orange">+ OSVDB-3092: /backup/ : Directory indexing enabled</span></div>
+        <div class="t-line"><span class="t-red">+ X-Frame-Options header missing — Clickjacking risk</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">hecker@kali</span><span class="t-dim">:~$ </span><span class="t-cmd">cat report_pentest.txt | grep "CRITICAL"</span></div>
+        <div class="t-line"><span class="t-red">[CRITICAL] Outdated SSL/TLS — Immediate patch required</span></div>
+        <div class="t-line"><span class="t-red">[CRITICAL] Default credentials on admin panel</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">hecker@kali</span><span class="t-dim">:~$ </span><span class="typed-cursor"></span></div>
+      </div>
+
+      <div class="t-tab" id="tab-network">
+        <div class="t-line"><span class="t-dim"># ═══ RÉSEAUX — Config &amp; Diagnostic ═══</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@router</span><span class="t-dim">:~$ </span><span class="t-cmd">ip route show table all</span></div>
+        <div class="t-line"><span class="t-out">default via 192.168.1.1 dev eth0</span></div>
+        <div class="t-line"><span class="t-out">192.168.10.0/24 dev vlan10  — VLAN RH</span></div>
+        <div class="t-line"><span class="t-out">192.168.20.0/24 dev vlan20  — VLAN IT</span></div>
+        <div class="t-line"><span class="t-out">192.168.30.0/24 dev vlan30  — VLAN DMZ</span></div>
+        <div class="t-line"><span class="t-out">10.0.0.0/8      dev tun0    — VPN Tunnel</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@router</span><span class="t-dim">:~$ </span><span class="t-cmd">openvpn --config client.ovpn --daemon</span></div>
+        <div class="t-line"><span class="t-green">Initialization Sequence Completed — VPN UP ✓</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@router</span><span class="t-dim">:~$ </span><span class="t-cmd">tcpdump -i eth0 -n port 443 -c 5</span></div>
+        <div class="t-line"><span class="t-out">14:05:01 IP 192.168.20.50.51200 > 93.184.216.34.443 [S]</span></div>
+        <div class="t-line"><span class="t-out">14:05:01 IP 93.184.216.34.443 > 192.168.20.50.51200 [S.]</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@router</span><span class="t-dim">:~$ </span><span class="t-cmd">ping -c 3 africa.future 🌍</span></div>
+        <div class="t-line"><span class="t-green">3 packets transmitted, 3 received, 0% loss, time 2.1ms</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@router</span><span class="t-dim">:~$ </span><span class="typed-cursor"></span></div>
+      </div>
+
+      <div class="t-tab" id="tab-python">
+        <div class="t-line"><span class="t-dim"># ═══ PYTHON — Scripts Sécurité &amp; Automation ═══</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">hecker@kali</span><span class="t-dim">:~$ </span><span class="t-cmd">python3 port_scanner.py --target 192.168.1.1</span></div>
+        <div class="t-line"><span class="t-blue">[*] Scanning 192.168.1.1 (ports 1–1024)...</span></div>
+        <div class="t-line"><span class="t-green">[+] 22/tcp  OPEN — ssh</span></div>
+        <div class="t-line"><span class="t-green">[+] 80/tcp  OPEN — http</span></div>
+        <div class="t-line"><span class="t-green">[+] 443/tcp OPEN — https</span></div>
+        <div class="t-line"><span class="t-out">[i] Done in 3.47s — 3 ports open</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@dev</span><span class="t-dim">:~$ </span><span class="t-cmd">python3 chatbot.py --port 5000</span></div>
+        <div class="t-line"><span class="t-blue"> Chatbot NLP engine initialized</span></div>
+        <div class="t-line"><span class="t-green"> Listening on http://0.0.0.0:5000 ✓</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@dev</span><span class="t-dim">:~$ </span><span class="t-cmd">python3 sql_query.py --db security.db</span></div>
+        <div class="t-line"><span class="t-blue">[*] SELECT * FROM incidents WHERE severity='critical';</span></div>
+        <div class="t-line"><span class="t-out">  id | date       | type        | status</span></div>
+        <div class="t-line"><span class="t-orange">  12 | 2026-03-01 | Brute Force | Resolved</span></div>
+        <div class="t-line"><span class="t-orange">  15 | 2026-03-03 | Malware     | Investigating</span></div>
+        <div class="t-line">&nbsp;</div>
+        <div class="t-line"><span class="t-prompt">cayeniga@dev</span><span class="t-dim">:~$ </span><span class="typed-cursor"></span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">03 — Compétences</div>
+  <h2 class="section-title">Expertises Techniques</h2>
+  <div class="skills-grid">
+    <div class="skill-card fade-in"><div class="skill-icon">🔵</div><div class="skill-card-title">Blue Team / SOC</div><div class="skill-tags"><span class="skill-tag">Détection menaces</span><span class="skill-tag">Incident Response</span><span class="skill-tag">SIEM</span><span class="skill-tag">Log Analysis</span><span class="skill-tag">Threat Hunting</span></div></div>
+    <div class="skill-card fade-in"><div class="skill-icon">🛡️</div><div class="skill-card-title">Cybersécurité</div><div class="skill-tags"><span class="skill-tag">Ethical Hacking</span><span class="skill-tag">Pentesting</span><span class="skill-tag">GRC / NIST CSF</span><span class="skill-tag">Audit sécurité</span><span class="skill-tag">Data Protection</span></div></div>
+    <div class="skill-card fade-in"><div class="skill-icon">⚙️</div><div class="skill-card-title">Outils SIEM</div><div class="skill-tags"><span class="skill-tag">Wazuh</span><span class="skill-tag">Suricata</span><span class="skill-tag">Nexus</span><span class="skill-tag">Google Chronicle</span><span class="skill-tag">OpenVPN</span></div></div>
+    <div class="skill-card fade-in"><div class="skill-icon">🌐</div><div class="skill-card-title">Réseaux</div><div class="skill-tags"><span class="skill-tag">VLAN · OSPF</span><span class="skill-tag">DHCP · DMZ</span><span class="skill-tag">VLSM</span><span class="skill-tag">Wi-Fi sécurisé</span><span class="skill-tag">Cisco Packet Tracer</span></div></div>
+    <div class="skill-card fade-in"><div class="skill-icon">💻</div><div class="skill-card-title">Systèmes & Prog.</div><div class="skill-tags"><span class="skill-tag">Kali Linux</span><span class="skill-tag">Ubuntu · Parrot</span><span class="skill-tag">Debian · Windows</span><span class="skill-tag">Python</span><span class="skill-tag">HTML/CSS · SQL</span></div></div>
+    <div class="skill-card fade-in"><div class="skill-icon">☁️</div><div class="skill-card-title">Cloud & IA</div><div class="skill-tags"><span class="skill-tag">Cloud Computing</span><span class="skill-tag">IA Moderne</span><span class="skill-tag">Blockchain</span><span class="skill-tag">IoT Security</span></div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">04 — Projets</div>
+  <h2 class="section-title">Projets Majeurs</h2>
+  <div class="projects-grid">
+    <div class="project-card fade-in"><div class="project-num">01</div><div class="project-title">SIEM Tools — Installation & Tutoriels</div><p class="project-desc">Installation et prise en main d'outils SIEM : Wazuh, Suricata, Chronicle. Rédaction de tutoriels pour la communauté cybersec francophone.</p><div class="project-tech"><span class="tech-tag">Wazuh</span><span class="tech-tag">Suricata</span><span class="tech-tag">Chronicle</span><span class="tech-tag">Blue Team</span></div></div>
+    <div class="project-card fade-in"><div class="project-num">02</div><div class="project-title">Audit de Sécurité — NIST CSF</div><p class="project-desc">Application du cadre NIST CSF à un SI fictif. Identification de vulnérabilités, évaluation des risques et propositions de mesures correctives.</p><div class="project-tech"><span class="tech-tag">NIST CSF</span><span class="tech-tag">GRC</span><span class="tech-tag">Risk Assessment</span></div></div>
+    <div class="project-card fade-in"><div class="project-num">03</div><div class="project-title">Simulation Réseau Complexe</div><p class="project-desc">Architectures réseaux complètes sur Cisco Packet Tracer : VLAN, OSPF, DMZ, VPN OpenVPN, proxy et subnetting VLSM.</p><div class="project-tech"><span class="tech-tag">Cisco PT</span><span class="tech-tag">VLAN</span><span class="tech-tag">OSPF</span><span class="tech-tag">DMZ</span><span class="tech-tag">OpenVPN</span></div></div>
+    <div class="project-card fade-in"><div class="project-num">04</div><div class="project-title">Analyse de Données SQL</div><p class="project-desc">Interrogation et manipulation de bases de données complexes pour analyses de sécurité, corrélation d'événements et reporting d'incidents.</p><div class="project-tech"><span class="tech-tag">SQL</span><span class="tech-tag">Data Analysis</span><span class="tech-tag">DB Security</span></div></div>
+    <div class="project-card fade-in"><div class="project-num">05</div><div class="project-title">Hackathon Future Studio — MVP</div><p class="project-desc">Création d'un MVP fonctionnel en 3 jours avec Intergravity AI. Introduction au "vibe coding" sous contrainte de temps.</p><div class="project-tech"><span class="tech-tag">Intergravity AI</span><span class="tech-tag">MVP</span><span class="tech-tag">Vibe Coding</span></div></div>
+    <div class="project-card fade-in"><div class="project-num">06</div><div class="project-title">Chatbot Python — Intégration Web</div><p class="project-desc">Développement d'un chatbot conversationnel en Python avec logique NLP, conçu pour intégration dans des interfaces web.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">NLP</span><span class="tech-tag">PyCharm</span><span class="tech-tag">Web Integration</span></div></div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">05 — Certifications</div>
+  <div class="certs-header">
+    <h2 class="section-title" style="margin-bottom:0;">Certifications</h2>
+    <div style="text-align:right;"><div class="cert-count">32+</div><div class="cert-count-label">CISCO · UNICEF · HP · Cybastion</div></div>
+  </div>
+  <div class="certs-list">
+    <div class="cert-item fade-in"><div><div class="cert-name">Introduction to Cybersecurity</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">09 déc. 2024</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Introduction to IoT and Digital Transformation</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">30 déc. 2024</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Operating Systems Basics</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">14 mar. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Computer Hardware Basics</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">15 mar. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Getting Started with Cisco Packet Tracer</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">15 mar. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">English for IT 1</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">24 mar. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Ethical Hacker</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">29 mai 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Digital Awareness [ETE]</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">29 aoû. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Using Computer and Mobile Devices [ETE]</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">29 aoû. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Introduction to Cybersecurity [ToT]</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">04 sep. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Digital Awareness [ToT]</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">01 sep. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Networking Basics [CCSTNET1]</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">16 sep. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Networking Devices and Initial Configuration</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">18 sep. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Network Addressing &amp; Troubleshooting</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">23 sep. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Network Support and Security</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">24 sep. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Apply AI: Analyze Customer Reviews</div><div class="cert-issuer">HP / YOMA</div></div><div class="cert-date">15 oct. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Digital Safety &amp; Security Awareness (#NetAcadCup)</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">14 jan. 2026</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Introduction to Cybersecurity (#NetAcadCup)</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">14 jan. 2026</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Intro IoT &amp; Digital Transformation (#NetAcadCup)</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">14 jan. 2026</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Networking Basics (#NetAcadCup)</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">14 jan. 2026</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Industrial Networking Essentials (#NetAcadCup)</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">05 fév. 2026</div></div>
+  </div>
+  <div class="upcoming-certs fade-in">
+    <div class="upcoming-title">🎯 En Préparation</div>
+    <div class="upcoming-list">
+      <span class="upcoming-item">CEH - Certified Ethical Hacker</span>
+      <span class="upcoming-item">CCNA</span>
+      <span class="upcoming-item">CompTIA Security+</span>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT -->
+<section id="engagement">
+  <div class="section-label">06 — Engagements</div>
+  <h2 class="section-title">Impact &amp; Communauté</h2>
+  <div class="engage-grid">
+    <div class="engage-card fade-in"><div class="engage-org">UNICEF / YOMA</div><div class="engage-role">Ambassadeur YOMA</div><p class="engage-desc">Promotion de l'employabilité des jeunes ivoiriens. Accès aux formations et opportunités professionnelles pour la jeunesse africaine.</p></div>
+    <div class="engage-card fade-in"><div class="engage-org">The Way Out</div><div class="engage-role">Ambassadeur & Assistant Technique</div><p class="engage-desc">Accompagnement de projets sociaux innovants. Support technique pour des initiatives à impact positif.</p></div>
+    <div class="engage-card fade-in"><div class="engage-org">fata.school</div><div class="engage-role">Ambassadeur & Resp. Partenariats</div><p class="engage-desc">Développement des partenariats stratégiques pour fata.school en Côte d'Ivoire.</p></div>
+    <div class="engage-card fade-in"><div class="engage-org">10000 Codeurs</div><div class="engage-role">Ambassadeur</div><p class="engage-desc">Formation et inspiration de la prochaine génération de développeurs africains.</p></div>
+    <div class="engage-card fade-in"><div class="engage-org">Cybastion x NetAcad</div><div class="engage-role">Formateur IA & Cybersécurité</div><p class="engage-desc">Formateur en IA Moderne et Littératie Numérique. Transmission de compétences critiques aux apprenants.</p></div>
+    <div class="engage-card fade-in"><div class="engage-org">RAPO 2025 — Lomé</div><div class="engage-role">Participant Conférence</div><p class="engage-desc">Réunion Annuelle du Partenariat de Ouagadougou à Lomé. Représentation de la jeunesse africaine.</p></div>
+  </div>
+</section>
+
+<!-- CV BANNER -->
+<section id="cv-section">
+  <div class="cv-bg-pattern"></div>
+  <div class="cv-glow"></div>
+  <div class="cv-content">
+    <div class="cv-eyebrow">Mon CV & Ma Vision</div>
+    <h2 class="cv-title">Analyste Cybersécurité Junior<br/><span style="color:var(--accent)">Disponible Maintenant</span></h2>
+    <div class="cv-slogan">"Protéger le numérique, Éduquer les esprits, Construire l'Afrique de demain."</div>
+    <p class="cv-tagline">Blue Team · SOC · GRC · Ethical Hacking<br/>Emploi · Stage · Côte d'Ivoire · International · Remote</p>
+    <div class="cv-actions">
+      <a href="mailto:coulzak14@gmail.com?subject=Demande%20de%20CV%20-%20Analyste%20Cybersécurité%20Junior&body=Bonjour%20Cayeniga%2C%0A%0AJe%20souhaite%20recevoir%20votre%20CV%20complet%20pour%20un%20poste%20d%27analyste%20cybersécurité%20junior." class="btn-primary">📧 Demander mon CV complet</a>
+      <a href="https://wa.me/2250507647326" target="_blank" class="btn-outline">💬 WhatsApp</a>
+      <a href="https://www.credly.com/users/cayeniga-anthelme" target="_blank" class="btn-outline">🏅 Mes Badges Credly</a>
+    </div>
+    <div class="cv-stripe">
+      <div class="cv-fact"><div class="cv-fact-num">32+</div><div class="cv-fact-label">Certifications</div></div>
+      <div class="cv-fact"><div class="cv-fact-num">6</div><div class="cv-fact-label">Projets</div></div>
+      <div class="cv-fact"><div class="cv-fact-num">5+</div><div class="cv-fact-label">Organisations</div></div>
+      <div class="cv-fact"><div class="cv-fact-num">3</div><div class="cv-fact-label">Certifs en cours</div></div>
+      <div class="cv-fact"><div class="cv-fact-num">2+</div><div class="cv-fact-label">Ans d'expérience</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">07 — Contact</div>
+  <h2 class="section-title">Travaillons Ensemble</h2>
+  <div class="contact-wrapper">
+    <div class="contact-left fade-in">
+      <p>Que vous cherchiez un <strong>Analyste Cybersécurité Junior</strong> pour votre SOC, un formateur en sécurité numérique, ou un partenaire pour un projet innovant — je suis disponible immédiatement en Côte d'Ivoire, à l'international et en remote.</p>
+      <div class="contact-links">
+        <a href="mailto:cayeniga.anthelme@email.com" class="contact-link"><span class="contact-link-icon">📧</span><div><span class="contact-link-label">Email</span>coulzak14gmail@gmail.com</div></a>
+        <a href="https://wa.me/2250507647326" class="contact-link" target="_blank"><span class="contact-link-icon">💬</span><div><span class="contact-link-label">WhatsApp</span>+225 05 07 64 73 26</div></a>
+        <a href="tel:+2250720315288" class="contact-link"><span class="contact-link-icon">📞</span><div><span class="contact-link-label">Appel</span>+225 07 20 31 52 88</div></a>
+        <a href="https://github.com/hack1-z" target="_blank" class="contact-link"><span class="contact-link-icon">💻</span><div><span class="contact-link-label">GitHub</span>hack1-z</div></a>
+        <a href="https://www.credly.com/users/cayeniga-anthelme" target="_blank" class="contact-link"><span class="contact-link-icon">🏅</span><div><span class="contact-link-label">Credly</span>Voir tous mes badges</div></a>
+      </div>
+    </div>
+    <div class="contact-right fade-in">
+      <h3 style="font-family:'Syne',sans-serif;font-size:1.15rem;margin-bottom:22px;">Envoyer un message</h3>
+      <div class="form-group"><label class="form-label">Nom complet</label><input type="text" class="form-input" id="f-name" placeholder="Votre nom"/></div>
+      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="f-email" placeholder="votre@email.com"/></div>
+      <div class="form-group"><label class="form-label">Sujet</label><input type="text" class="form-input" id="f-subj" placeholder="Offre de stage / emploi..."/></div>
+      <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" id="f-msg" placeholder="Décrivez votre opportunité..."></textarea></div>
+      <button onclick="sendMail()" class="btn-primary" style="width:100%;text-align:center;border:none;">Envoyer →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">CCAZ.SEC</div>
+  <div class="footer-copy">© 2026 Cayeniga Anthelme Zakaria Coulibaly — Abidjan, Côte d'Ivoire</div>
+  <div class="footer-socials">
+    <a href="https://github.com/hack1-z" target="_blank" class="footer-social">GitHub</a>
+    <a href="https://www.credly.com/users/cayeniga-anthelme" target="_blank" class="footer-social">Credly</a>
+    <a href="mailto:coulzak14gmail.com" class="footer-social">Email</a>
+    <a href="https://wa.me/2250507647326" target="_blank" class="footer-social">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  if (window.matchMedia('(hover: hover)').matches && cursor && ring) {
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = (mx-6)+'px'; cursor.style.top = (my-6)+'px';
+    });
+    (function anim(){ rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=(rx-18)+'px'; ring.style.top=(ry-18)+'px'; requestAnimationFrame(anim); })();
+    document.querySelectorAll('a,button,.skill-card,.project-card,.engage-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.style.transform='scale(2.5)');
+      el.addEventListener('mouseleave', () => cursor.style.transform='scale(1)');
+    });
+  }
+
+  // Hamburger
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobileMenu');
+  ham.addEventListener('click', () => mob.classList.toggle('open'));
+  function closeMob() { mob.classList.remove('open'); }
+
+  // Fade-in
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 65); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // Terminal tabs
+  function switchTab(btn, id) {
+    document.querySelectorAll('.ttab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.t-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(id).classList.add('active');
+  }
+
+  // Contact form
+  function sendMail() {
+    const name = document.getElementById('f-name').value;
+    const email = document.getElementById('f-email').value;
+    const subject = document.getElementById('f-subj').value;
+    const message = document.getElementById('f-msg').value;
+    
+    if (!name || !email || !subject || !message) {
+      alert('Veuillez remplir tous les champs');
+      return;
+    }
+    
+    // Création du corps du message
+    const body = `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+    
+    // Ouverture du client mail par défaut
+    window.location.href = `mailto:coulzak14@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+</script>
+</body>
+</html>
