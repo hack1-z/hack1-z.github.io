@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cayeniga Anthelme Zakaria Coulibaly — Analyste Cybersécurité Junior</title>
+  <title>Cayeniga Anthelme Zakaria Coulibaly - Futur Analyste SOC</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -45,9 +45,6 @@
     }
     @media (hover: none) { .cursor, .cursor-ring { display: none; } body { cursor: auto; } }
 
-    body::before { display: none; }
-    body::after { display: none; }
-
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -61,7 +58,7 @@
     .nav-links { display: flex; gap: 24px; list-style: none; }
     .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
-    .nav-cta { font-family: 'DM Mono', monospace; font-size: 0.7rem; padding: 8px 16px; border: 1px solid var(--accent); color: var(--accent); background: transparent; cursor: pointer; letter-spacing: 1px; transition: all 0.2s; text-decoration: none; }
+    .nav-cta { font-family: 'DM Mono', monospace; font-size: 0.7rem; padding: 8px 16px; border: 1px solid var(--accent); color: var(--accent); background: transparent; cursor: pointer; letter-spacing: 1px; transition: all 0.2s; text-decoration: none; border-radius: 8px; }
     .nav-cta:hover { background: var(--accent); color: var(--bg); }
     .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--accent); transition: all 0.3s; }
@@ -87,10 +84,10 @@
 
     .hero-content { grid-column: 1; grid-row: 1; position: relative; z-index: 2; }
 
-    .status-badge { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--accent); background: rgba(0,245,160,0.08); border: 1px solid rgba(0,245,160,0.2); padding: 6px 12px; margin-bottom: 18px; letter-spacing: 1px; animation: fadeUp 0.8s ease both; }
+    .status-badge { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--accent); background: rgba(0,245,160,0.08); border: 1px solid rgba(0,245,160,0.2); padding: 6px 12px; margin-bottom: 18px; letter-spacing: 1px; animation: fadeUp 0.8s ease both; border-radius: 100px; }
     .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: blink 1.5s ease-in-out infinite; }
 
-    .hero-job-title { display: inline-flex; align-items: center; gap: 10px; font-family: 'DM Mono', monospace; font-size: 0.73rem; background: linear-gradient(135deg, rgba(0,195,255,0.12), rgba(0,245,160,0.07)); border: 1px solid rgba(0,195,255,0.3); padding: 10px 18px; margin-bottom: 20px; color: var(--accent2); letter-spacing: 1px; animation: fadeUp 0.8s 0.05s ease both; }
+    .hero-job-title { display: inline-flex; align-items: center; gap: 10px; font-family: 'DM Mono', monospace; font-size: 0.73rem; background: linear-gradient(135deg, rgba(0,195,255,0.12), rgba(0,245,160,0.07)); border: 1px solid rgba(0,195,255,0.3); padding: 10px 18px; margin-bottom: 20px; color: var(--accent2); letter-spacing: 1px; animation: fadeUp 0.8s 0.05s ease both; border-radius: 8px; }
 
     .hero-tag { font-family: 'DM Mono', monospace; font-size: 0.67rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; animation: fadeUp 0.8s 0.08s ease both; flex-wrap: wrap; }
     .hero-tag::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--muted); flex-shrink: 0; }
@@ -103,22 +100,23 @@
       word-break: break-word;
     }
     .hero-name span { color: var(--accent); }
+    .hero-name .soc-highlight { color: var(--accent2); font-style: italic; }
 
     .hero-slogan { font-family: 'DM Mono', monospace; font-size: clamp(0.75rem, 1.5vw, 0.98rem); color: var(--accent2); font-style: italic; margin-bottom: 18px; animation: fadeUp 0.8s 0.2s ease both; border-left: 3px solid var(--accent2); padding-left: 14px; }
 
     .hero-desc { font-size: clamp(0.84rem, 1.4vw, 0.95rem); color: var(--muted); line-height: 1.8; max-width: 560px; margin-bottom: 28px; animation: fadeUp 0.8s 0.28s ease both; }
 
     .avail-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; animation: fadeUp 0.8s 0.32s ease both; }
-    .avail-chip { font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 5px 12px; letter-spacing: 1px; border-radius: 2px; }
+    .avail-chip { font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 5px 12px; letter-spacing: 1px; border-radius: 100px; }
     .avail-chip.green { background: rgba(0,245,160,0.1); border: 1px solid rgba(0,245,160,0.3); color: var(--accent); }
     .avail-chip.blue { background: rgba(0,195,255,0.1); border: 1px solid rgba(0,195,255,0.3); color: var(--accent2); }
     .avail-chip.orange { background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.3); color: var(--accent3); }
 
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp 0.8s 0.38s ease both; }
 
-    .btn-primary { padding: 13px 28px; background: var(--accent); color: var(--bg); font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); }
+    .btn-primary { padding: 13px 28px; background: var(--accent); color: #ffffff; font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; border-radius: 8px; }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,245,160,0.4); }
-    .btn-outline { padding: 13px 28px; background: transparent; color: var(--text); font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 1px; border: 1px solid var(--border); cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
+    .btn-outline { padding: 13px 28px; background: transparent; color: var(--text); font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 1px; border: 1px solid var(--border); cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; border-radius: 8px; }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
     .hero-stats { grid-column: 2; grid-row: 1; display: flex; flex-direction: column; gap: 28px; animation: fadeUp 0.8s 0.5s ease both; align-self: center; }
@@ -142,8 +140,8 @@
     .about-text p { color: var(--muted); line-height: 1.9; font-size: 0.92rem; margin-bottom: 16px; }
     .about-text p strong { color: var(--text); }
     .about-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-    .badge { font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 5px 12px; background: rgba(0,245,160,0.08); border: 1px solid rgba(0,245,160,0.2); color: var(--accent); letter-spacing: 1px; }
-    .about-info-card { background: var(--surface2); border: 1px solid var(--border); padding: 26px; position: relative; overflow: hidden; margin-bottom: 18px; }
+    .badge { font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 5px 12px; background: rgba(0,245,160,0.08); border: 1px solid rgba(0,245,160,0.2); color: var(--accent); letter-spacing: 1px; border-radius: 100px; }
+    .about-info-card { background: var(--surface2); border: 1px solid var(--border); padding: 26px; position: relative; overflow: hidden; margin-bottom: 18px; border-radius: 12px; }
     .about-info-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--accent), var(--accent2)); }
     .info-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.04); gap: 12px; }
     .info-row:last-child { border-bottom: none; }
@@ -169,60 +167,40 @@
     .track-tag.current { background: rgba(0,195,255,0.1); color: var(--accent2); }
     .track-tag.future { background: rgba(255,255,255,0.04); color: var(--muted); }
 
-    /* TERMINAL SMALL */
-    .terminal-card { background: #050d1a; border: 1px solid rgba(0,245,160,0.2); border-radius: 4px; overflow: hidden; }
-    .terminal-bar { background: #0c1828; padding: 10px 14px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(0,245,160,0.1); }
-    .t-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .t-dot.red { background: #ff5f56; }
-    .t-dot.yellow { background: #ffbd2e; }
-    .t-dot.green { background: #27c93f; }
-    .terminal-body-sm { padding: 18px 20px; font-family: 'DM Mono', monospace; font-size: 0.7rem; line-height: 1.9; overflow-x: auto; }
+    /* TECH SKILLS SECTION */
+    #tech-skills { background: var(--surface); }
+    .skills-category { margin-bottom: 40px; }
+    .skills-category h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; margin-bottom: 18px; color: var(--accent); }
+    .skills-grid-detailed { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .skill-item { background: var(--bg); border: 1px solid var(--border); padding: 16px 20px; border-radius: 10px; display: flex; align-items: center; gap: 14px; transition: all 0.2s; }
+    .skill-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .skill-icon-large { font-size: 1.8rem; min-width: 40px; text-align: center; }
+    .skill-content { flex: 1; }
+    .skill-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 4px; }
+    .skill-desc { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); }
 
-    /* BIG TERMINAL */
-    #terminal-section { background: var(--bg); }
-    .terminal-big { background: #050d1a; border: 1px solid rgba(0,245,160,0.25); border-radius: 6px; overflow: hidden; max-width: 900px; margin: 0 auto; box-shadow: 0 0 60px rgba(0,245,160,0.05); }
-    .terminal-topbar { background: #0c1828; padding: 12px 20px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(0,245,160,0.1); flex-wrap: wrap; row-gap: 8px; }
-    .terminal-title { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #4a6080; margin-left: 10px; letter-spacing: 1px; }
-    .terminal-tabs { display: flex; gap: 0; margin-left: auto; flex-wrap: wrap; }
-    .ttab { font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 4px 14px; color: var(--muted); cursor: pointer; border: none; border-bottom: 2px solid transparent; background: none; transition: all 0.2s; }
-    .ttab.active { color: var(--accent); border-bottom-color: var(--accent); }
-    .terminal-content { padding: 26px 30px; font-family: 'DM Mono', monospace; font-size: 0.76rem; line-height: 1.9; min-height: 340px; overflow-x: auto; }
-    .t-line { white-space: pre-wrap; word-break: break-all; }
-    .t-prompt { color: var(--accent); }
-    .t-cmd { color: var(--text); }
-    .t-out { color: var(--muted); }
-    .t-green { color: var(--accent); }
-    .t-blue { color: var(--accent2); }
-    .t-orange { color: var(--accent3); }
-    .t-red { color: var(--danger); }
-    .t-dim { color: #3a4f6a; }
-    .t-tab { display: none; }
-    .t-tab.active { display: block; }
-    .typed-cursor { display: inline-block; width: 8px; height: 0.9em; background: var(--accent); vertical-align: -1px; animation: blink 0.8s step-end infinite; }
-    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
-
-    /* SKILLS */
-    #skills { background: var(--surface); }
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .skill-card { background: var(--bg); border: 1px solid var(--border); padding: 26px; transition: all 0.3s; position: relative; overflow: hidden; }
-    .skill-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,245,160,0.04) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; }
-    .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
-    .skill-card:hover::after { opacity: 1; }
-    .skill-icon { font-size: 1.7rem; margin-bottom: 12px; }
-    .skill-card-title { font-family: 'DM Serif Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 12px; color: var(--text); }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .skill-tag { font-family: 'DM Mono', monospace; font-size: 0.58rem; padding: 3px 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--muted); }
-
-    /* PROJECTS */
+    /* PROJECTS - 8 PROJETS CONCRETS */
     #projects { background: var(--bg); }
     .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
-    .project-card { background: var(--surface); border: 1px solid var(--border); padding: 28px; transition: all 0.3s; }
+    .project-card { background: var(--surface); border: 1px solid var(--border); padding: 28px; transition: all 0.3s; border-radius: 12px; }
     .project-card:hover { border-color: var(--accent2); }
     .project-num { font-family: 'DM Serif Display', serif; font-size: 2.6rem; font-weight: 800; color: rgba(0,245,160,0.07); line-height: 1; margin-bottom: 12px; }
-    .project-title { font-family: 'DM Serif Display', serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; }
-    .project-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
-    .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tech-tag { font-family: 'DM Mono', monospace; font-size: 0.58rem; padding: 3px 8px; background: rgba(0,195,255,0.08); border: 1px solid rgba(0,195,255,0.2); color: var(--accent2); }
+    .project-title { font-family: 'DM Serif Display', serif; font-weight: 700; font-size: 1.15rem; margin-bottom: 10px; }
+    .project-context { font-size: 0.75rem; color: var(--accent2); font-family: 'DM Mono', monospace; margin-bottom: 8px; }
+    .project-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+    .project-learned { font-size: 0.78rem; background: rgba(0,245,160,0.05); padding: 8px 12px; border-radius: 6px; margin-bottom: 12px; border-left: 3px solid var(--accent); }
+    .project-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .tech-tag { font-family: 'DM Mono', monospace; font-size: 0.58rem; padding: 3px 8px; background: rgba(0,195,255,0.08); border: 1px solid rgba(0,195,255,0.2); color: var(--accent2); border-radius: 4px; }
+
+    /* LABS SECTION */
+    #labs { background: var(--surface); }
+    .labs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .lab-card { background: var(--bg); border: 1px solid var(--border); padding: 24px; border-radius: 12px; transition: all 0.3s; }
+    .lab-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .lab-icon { font-size: 2rem; margin-bottom: 12px; }
+    .lab-title { font-family: 'DM Serif Display', serif; font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+    .lab-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+    .lab-tools { display: flex; flex-wrap: wrap; gap: 4px; }
 
     /* CERTIFICATIONS */
     #certifications { background: var(--surface); }
@@ -230,20 +208,21 @@
     .cert-count { font-family: 'DM Serif Display', serif; font-size: 4.5rem; font-weight: 800; color: var(--accent); line-height: 1; }
     .cert-count-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 2px; }
     .certs-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .cert-item { background: var(--bg); border: 1px solid var(--border); padding: 14px 18px; display: flex; justify-content: space-between; align-items: flex-start; transition: border-color 0.2s; gap: 10px; }
+    .cert-item { background: var(--bg); border: 1px solid var(--border); padding: 14px 18px; display: flex; justify-content: space-between; align-items: flex-start; transition: border-color 0.2s; gap: 10px; border-radius: 8px; }
     .cert-item:hover { border-color: var(--accent3); }
     .cert-name { font-size: 0.8rem; font-weight: 500; }
     .cert-date { font-family: 'DM Mono', monospace; font-size: 0.57rem; color: var(--muted); white-space: nowrap; margin-top: 2px; }
     .cert-issuer { font-family: 'DM Mono', monospace; font-size: 0.52rem; color: var(--accent3); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-    .upcoming-certs { margin-top: 28px; padding: 22px; background: var(--bg); border: 1px dashed rgba(0,245,160,0.3); }
+    .cert-highlight { background: rgba(0,245,160,0.1); border-left: 4px solid var(--accent); }
+    .upcoming-certs { margin-top: 28px; padding: 22px; background: var(--bg); border: 1px dashed rgba(0,245,160,0.3); border-radius: 12px; }
     .upcoming-title { font-family: 'DM Serif Display', serif; font-weight: 700; font-size: 0.95rem; color: var(--accent); margin-bottom: 12px; }
     .upcoming-list { display: flex; gap: 12px; flex-wrap: wrap; }
-    .upcoming-item { font-family: 'DM Mono', monospace; font-size: 0.65rem; padding: 7px 14px; border: 1px solid rgba(245,166,35,0.4); color: var(--accent3); }
+    .upcoming-item { font-family: 'DM Mono', monospace; font-size: 0.65rem; padding: 7px 14px; border: 1px solid rgba(245,166,35,0.4); color: var(--accent3); border-radius: 100px; }
 
     /* ENGAGEMENT */
     #engagement { background: var(--bg); }
     .engage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .engage-card { background: var(--surface); border: 1px solid var(--border); padding: 26px; transition: all 0.3s; }
+    .engage-card { background: var(--surface); border: 1px solid var(--border); padding: 26px; transition: all 0.3s; border-radius: 12px; }
     .engage-card:hover { border-color: var(--danger); transform: translateY(-4px); }
     .engage-org { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--danger); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 9px; }
     .engage-role { font-family: 'DM Serif Display', serif; font-weight: 700; font-size: 0.92rem; margin-bottom: 9px; }
@@ -256,7 +235,7 @@
     .cv-content { position: relative; z-index: 2; }
     .cv-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; }
     .cv-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; margin-bottom: 14px; line-height: 1.1; }
-    .cv-slogan { font-family: 'DM Mono', monospace; font-size: clamp(0.78rem, 1.6vw, 1.05rem); color: var(--accent); font-style: italic; margin-bottom: 14px; padding: 10px 20px; border: 1px solid rgba(0,245,160,0.2); display: inline-block; background: rgba(0,245,160,0.04); }
+    .cv-slogan { font-family: 'DM Mono', monospace; font-size: clamp(0.78rem, 1.6vw, 1.05rem); color: var(--accent); font-style: italic; margin-bottom: 14px; padding: 10px 20px; border: 1px solid rgba(0,245,160,0.2); display: inline-block; background: rgba(0,245,160,0.04); border-radius: 100px; }
     .cv-tagline { color: var(--muted); font-size: 0.92rem; margin-bottom: 40px; line-height: 1.8; }
     .cv-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 52px; }
     .cv-stripe { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; border-top: 1px solid var(--border); padding-top: 40px; }
@@ -269,24 +248,31 @@
     .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
     .contact-left p { color: var(--muted); line-height: 1.9; margin-bottom: 26px; font-size: 0.9rem; }
     .contact-links { display: flex; flex-direction: column; gap: 10px; }
-    .contact-link { display: flex; align-items: center; gap: 14px; padding: 13px 16px; background: var(--bg); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.84rem; transition: all 0.2s; }
+    .contact-link { display: flex; align-items: center; gap: 14px; padding: 13px 16px; background: var(--bg); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.84rem; transition: all 0.2s; border-radius: 10px; }
     .contact-link:hover { border-color: var(--accent); color: var(--accent); }
     .contact-link-icon { font-size: 1.1rem; width: 28px; text-align: center; flex-shrink: 0; }
     .contact-link-label { font-family: 'DM Mono', monospace; font-size: 0.56rem; color: var(--muted); display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 1px; }
-    .contact-right { background: var(--bg); border: 1px solid var(--border); padding: 36px; }
+    .contact-right { background: var(--bg); border: 1px solid var(--border); padding: 36px; border-radius: 14px; }
     .form-group { margin-bottom: 18px; }
     .form-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 6px; }
-    .form-input, .form-textarea { width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 11px 14px; font-family: 'DM Sans', sans-serif; font-size: 0.87rem; outline: none; transition: border-color 0.2s; }
+    .form-input, .form-textarea { width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 11px 14px; font-family: 'DM Sans', sans-serif; font-size: 0.87rem; outline: none; transition: border-color 0.2s; border-radius: 8px; }
     .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
     .form-textarea { min-height: 100px; resize: vertical; }
 
     /* FOOTER */
-    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; flex-wrap: wrap; gap: 14px; }
-    .footer-logo { font-family: 'DM Serif Display', serif; font-weight: 800; font-size: 0.9rem; color: var(--accent); letter-spacing: 2px; }
-    .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); text-align: center; }
+    footer { background: #1c1917; border-top: 1px solid var(--border); padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; flex-wrap: wrap; gap: 14px; }
+    .footer-logo { font-family: 'DM Serif Display', serif; font-weight: 800; font-size: 0.9rem; color: #6ee7b7; letter-spacing: 2px; }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: #78716c; text-align: center; }
     .footer-socials { display: flex; gap: 18px; flex-wrap: wrap; }
-    .footer-social { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-social:hover { color: var(--accent); }
+    .footer-social { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: #78716c; text-decoration: none; transition: color 0.2s; }
+    .footer-social:hover { color: #6ee7b7; }
+
+    /* ANNEXE SECTION */
+    #annexe { background: var(--surface2); padding: 60px; }
+    .annexe-content { max-width: 800px; margin: 0 auto; text-align: center; }
+    .annexe-badge { display: inline-block; background: var(--accent); color: white; padding: 8px 16px; border-radius: 100px; font-family: 'DM Mono', monospace; font-size: 0.7rem; margin-bottom: 20px; }
+    .annexe-title { font-family: 'DM Serif Display', serif; font-size: 2rem; margin-bottom: 20px; }
+    .annexe-card { background: var(--bg); border: 1px solid var(--border); padding: 30px; border-radius: 12px; text-align: left; margin-top: 30px; }
 
     /* ANIMATIONS */
     @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
@@ -299,7 +285,8 @@
       section { padding: 80px 40px; }
       #hero { padding: 105px 40px 70px; column-gap: 28px; }
       .hero-name { font-size: clamp(2.2rem, 4.5vw, 4rem); }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .labs-grid { grid-template-columns: repeat(2, 1fr); }
       .engage-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 900px) {
@@ -314,10 +301,8 @@
       .scroll-indicator { grid-column: 1; grid-row: 3; }
       .hero-name { font-size: clamp(2.2rem, 7.5vw, 3.6rem); }
       .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-      .projects-grid, .certs-list { grid-template-columns: 1fr; }
-      .engage-grid { grid-template-columns: repeat(2, 1fr); }
-      .terminal-content { padding: 18px 16px; font-size: 0.7rem; }
+      .skills-grid-detailed { grid-template-columns: 1fr; }
+      .projects-grid, .certs-list, .labs-grid, .engage-grid { grid-template-columns: 1fr; }
       footer { padding: 26px 22px; justify-content: center; text-align: center; }
       .cv-stripe { gap: 24px; }
     }
@@ -331,12 +316,7 @@
       .avail-chip { font-size: 0.54rem; padding: 4px 9px; }
       .hero-stats { gap: 14px 22px; }
       .stat-num { font-size: 1.7rem; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .engage-grid { grid-template-columns: 1fr; }
       .section-title { font-size: clamp(1.5rem, 7vw, 2rem); }
-      .terminal-content { padding: 14px 12px; font-size: 0.63rem; min-height: 260px; }
-      .terminal-topbar { padding: 8px 12px; }
-      .ttab { font-size: 0.52rem; padding: 3px 8px; }
       .cert-count { font-size: 3rem; }
       .cv-title { font-size: clamp(1.7rem, 8vw, 2.6rem); }
       .cv-actions { flex-direction: column; align-items: center; }
@@ -344,7 +324,6 @@
       .contact-right { padding: 20px 16px; }
       footer { flex-direction: column; gap: 12px; }
     }
-    /* Landscape mobile */
     @media (max-width: 900px) and (orientation: landscape) {
       #hero { min-height: auto; padding: 80px 32px 36px; grid-template-columns: 1fr auto; grid-template-rows: 1fr auto; column-gap: 32px; }
       .hero-content { grid-column: 1; grid-row: 1; }
@@ -353,25 +332,6 @@
       .scroll-indicator { grid-column: 1 / -1; grid-row: 2; }
       .hero-name { font-size: clamp(1.8rem, 4.5vw, 2.8rem); }
     }
-      /* === FINITIONS VISUELLES === */
-    .btn-primary { clip-path: none; border-radius: 8px; color: #ffffff; }
-    .btn-outline { border-radius: 8px; }
-    .avail-chip { border-radius: 100px; }
-    .badge { border-radius: 100px; }
-    .about-info-card { border-radius: 12px; }
-    .skill-card { border-radius: 12px; }
-    .project-card { border-radius: 12px; }
-    .cert-item { border-radius: 8px; }
-    .engage-card { border-radius: 12px; }
-    .contact-link { border-radius: 10px; }
-    .contact-right { border-radius: 14px; }
-    .form-input, .form-textarea { border-radius: 8px; }
-    .nav-cta { border-radius: 8px; }
-    footer { background: #1c1917; }
-    .footer-logo { color: #6ee7b7; }
-    .footer-copy { color: #78716c; }
-    .footer-social { color: #78716c; }
-    .footer-social:hover { color: #6ee7b7; }
   </style>
 </head>
 <body>
@@ -384,21 +344,21 @@
   <div class="nav-logo">CCAZ.SEC</div>
   <ul class="nav-links">
     <li><a href="#about">À Propos</a></li>
-    <li><a href="#terminal-section">Terminal</a></li>
-    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#tech-skills">Compétences</a></li>
     <li><a href="#projects">Projets</a></li>
+    <li><a href="#labs">Labs</a></li>
     <li><a href="#certifications">Certifications</a></li>
     <li><a href="#engagement">Engagement</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="mailto:cayeniga.anthelme@email.com" class="nav-cta">Me Contacter</a>
+  <a href="mailto:coulzak14@gmail.com" class="nav-cta">Me Contacter</a>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="closeMob()">À Propos</a>
-  <a href="#terminal-section" onclick="closeMob()">Terminal</a>
-  <a href="#skills" onclick="closeMob()">Compétences</a>
+  <a href="#tech-skills" onclick="closeMob()">Compétences</a>
   <a href="#projects" onclick="closeMob()">Projets</a>
+  <a href="#labs" onclick="closeMob()">Labs</a>
   <a href="#certifications" onclick="closeMob()">Certifications</a>
   <a href="#engagement" onclick="closeMob()">Engagement</a>
   <a href="#contact" onclick="closeMob()">Contact</a>
@@ -412,17 +372,18 @@
   <div class="hero-content">
     <div class="status-badge">
       <span class="status-dot"></span>
-      Ouvert aux opportunités · Côte d'Ivoire &amp; International
+      🔍 Futur Analyste SOC · Disponible Côte d'Ivoire, Remote & International
     </div>
 
     <div class="hero-job-title">
-      🔵&nbsp;&nbsp;Analyste Cybersécurité Junior - SOC / Blue Team
+      🛡️&nbsp;&nbsp;Analyste Cybersécurité Junior - Spécialisation Blue Team / SOC
     </div>
 
-    <div class="hero-tag">Ethical Hacker · Formateur · Ambassadeur YOMA</div>
+    <div class="hero-tag">Ethical Hacker · Formateur · Ambassadeur</div>
 
     <h1 class="hero-name">
-      <span>Cayeniga Anthelme Zakaria Coulibaly</span>
+      Cayeniga Anthelme <span>Zakaria Coulibaly</span><br/>
+      <span class="soc-highlight">Futur Analyste SOC</span>
     </h1>
 
     <p class="hero-slogan">
@@ -430,25 +391,28 @@
     </p>
 
     <p class="hero-desc">
-      Analyste Cybersécurité Junior orienté <strong style="color:var(--accent2)">Blue Team &amp; SOC</strong>, spécialisé en détection des menaces, SIEM et réponse aux incidents. Objectif : devenir <strong style="color:var(--accent)">Expert en Cybersécurité</strong> et sécuriser le numérique africain.
+      <strong>Objectif professionnel :</strong> Devenir <strong style="color:var(--accent2)">Analyste SOC</strong> pour détecter, analyser et répondre aux menaces. 
+      Compétences solides en SIEM (Wazuh, Suricata), analyse de logs, et sécurité réseau. 
+      Passionné par la <strong style="color:var(--accent)">Blue Team</strong> et la chasse aux menaces.
     </p>
 
     <div class="avail-chips">
-      <span class="avail-chip green">✓ Emploi</span>
-      <span class="avail-chip blue">✓ Stage</span>
-      <span class="avail-chip orange">✓ CI &amp; International</span>
+      <span class="avail-chip green">✓ Côte d'Ivoire</span>
+      <span class="avail-chip blue">✓ Remote</span>
+      <span class="avail-chip orange">✓ International</span>
     </div>
 
     <div class="hero-actions">
-      <a href="mailto:cayeniga.anthelme@email.com?subject=Demande%20de%20CV%20-%20Analyste%20Cybersécurité%20Junior&body=Bonjour%20Cayeniga%2C%0A%0AJe%20souhaite%20recevoir%20votre%20CV%20complet%20pour%20un%20poste%20d%27analyste%20cybersécurité%20junior." class="btn-primary">Demander mon CV</a>
-      <a href="#projects" class="btn-outline">Voir mes Projets</a>
+      <a href="mailto:coulzak14@gmail.com?subject=Demande%20de%20CV%20-%20Futur%20Analyste%20SOC&body=Bonjour%20Cayeniga%2C%0A%0AJe%20souhaite%20recevoir%20votre%20CV%20pour%20un%20poste%20d%27analyste%20SOC%20junior." class="btn-primary">📄 Demander mon CV</a>
+      <a href="#projects" class="btn-outline">Voir mes 8 projets</a>
     </div>
   </div>
 
   <div class="hero-stats">
-    <div class="stat-item"><div class="stat-num">32+</div><div class="stat-label">Certifications</div></div>
-    <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">Projets Majeurs</div></div>
+    <div class="stat-item"><div class="stat-num">33+</div><div class="stat-label">Certifications</div></div>
+    <div class="stat-item"><div class="stat-num">8</div><div class="stat-label">Projets Concrets</div></div>
     <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">Organisations</div></div>
+    <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Certifs en cours</div></div>
   </div>
 
   <div class="scroll-indicator">
@@ -459,195 +423,235 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-label">01 — À Propos</div>
+  <div class="section-label">01 - À Propos</div>
   <h2 class="section-title">Qui suis-je ?</h2>
   <div class="about-grid">
     <div class="about-text fade-in">
-      <p>Je suis <strong>Cayeniga Anthelme Zakaria Coulibaly</strong>, étudiant en Réseaux &amp; Sécurité Informatique (UVCI), à la recherche active d'un poste d'<strong>Analyste Cybersécurité Junior</strong>.</p>
-      <p>Mon cœur de métier : la <strong>Blue Team</strong> - surveiller, détecter et répondre aux incidents de sécurité. Je maîtrise les outils SIEM (Wazuh, Suricata) et les cadres GRC pour évaluer et réduire les risques. Toutes mes formations convergent vers un seul objectif : devenir <strong>Expert en Cybersécurité</strong>.</p>
-      <p>Au-delà du technique, je m'engage pour l'<strong>employabilité et des compétences des jeunes africains</strong> comme Ambassadeur YOMA-UNICEF et formateur en littératie numérique.</p>
+      <p>Je suis <strong>Cayeniga Anthelme Zakaria Coulibaly</strong>, étudiant en Réseaux &amp; Sécurité Informatique (UVCI), en recherche active d'un poste d'<strong>Analyste SOC Junior</strong>.</p>
+      <p>Ma passion : la <strong>détection et réponse aux incidents</strong>. Je maîtrise les outils SIEM (Wazuh, Suricata), l'analyse de logs, et les frameworks de cybersécurité (NIST CSF, ISO 27001). Mon parcours est orienté vers un objectif clair : <strong>devenir un analyste SOC compétent et contribuer à la sécurisation du numérique africain</strong>.</p>
+      <p>Au-delà du technique, je m'engage pour l'employabilité des jeunes africains comme Ambassadeur YOMA-UNICEF et formateur en littératie numérique.</p>
       <div class="about-badges">
+        <span class="badge">🎯 Futur SOC Analyst</span>
         <span class="badge">Blue Team</span>
-        <span class="badge">SOC Analyst</span>
         <span class="badge">SIEM</span>
-        <span class="badge">Ethical Hacking</span>
+        <span class="badge">Threat Detection</span>
+        <span class="badge">Incident Response</span>
         <span class="badge">GRC</span>
-        <span class="badge">Formateur</span>
-        <span class="badge">UNICEF YOMA</span>
-        <span class="badge">Cloud</span>
-        <span class="badge">IA</span>
+        <span class="badge">Power BI</span>
       </div>
     </div>
     <div class="fade-in">
       <div class="goal-track">
-        <div class="goal-track-title">🎯 Parcours → Expert en Cybersécurité</div>
-        <div class="track-step"><div class="track-dot done"></div><span class="track-label">Formation Réseaux &amp; Cybersécurité</span><span class="track-tag done">✓ Actif</span></div>
-        <div class="track-step"><div class="track-dot current"></div><span class="track-label current">Analyste Cybersécurité Junior — SOC</span><span class="track-tag current">→ Objectif</span></div>
-        <div class="track-step"><div class="track-dot future"></div><span class="track-label future">CEH · CCNA · Security+</span><span class="track-tag future">En cours</span></div>
-        <div class="track-step"><div class="track-dot future"></div><span class="track-label future">Analyste SOC Senior</span><span class="track-tag future">Horizon 3 ans</span></div>
-        <div class="track-step"><div class="track-dot future"></div><span class="track-label future">Expert en Cybersécurité</span><span class="track-tag future">But final</span></div>
+        <div class="goal-track-title">🎯 Parcours vers mon objectif : Analyste SOC</div>
+        <div class="track-step"><div class="track-dot done"></div><span class="track-label">Formation Réseaux & Cybersécurité</span><span class="track-tag done">✓ Validé</span></div>
+        <div class="track-step"><div class="track-dot done"></div><span class="track-label">Google Cybersecurity Pro Cert.</span><span class="track-tag done">✓ Obtenu</span></div>
+        <div class="track-step"><div class="track-dot current"></div><span class="track-label current">Analyste SOC Junior</span><span class="track-tag current">→ Recherche active</span></div>
+        <div class="track-step"><div class="track-dot future"></div><span class="track-label future">ISC2 Certified in Cybersecurity (CC)</span><span class="track-tag future">En cours</span></div>
+        <div class="track-step"><div class="track-dot future"></div><span class="track-label future">Analyste SOC Confirmé</span><span class="track-tag future">Objectif 2027</span></div>
       </div>
       <div class="about-info-card">
-        <div class="info-row"><span class="info-key">Poste visé</span><span class="info-val" style="color:var(--accent2)">Analyste Cybersécu. Junior</span></div>
+        <div class="info-row"><span class="info-key">Poste visé</span><span class="info-val" style="color:var(--accent2); font-weight:600;">Analyste SOC Junior</span></div>
         <div class="info-row"><span class="info-key">Disponibilité</span><span class="info-val" style="color:var(--accent)">Immédiate</span></div>
-        <div class="info-row"><span class="info-key">Localisation</span><span class="info-val">Abidjan, CI &amp; Remote</span></div>
-        <div class="info-row"><span class="info-key">Formation</span><span class="info-val">UTA · UVCI · We.Code</span></div>
+        <div class="info-row"><span class="info-key">Localisation</span><span class="info-val">Abidjan · Remote · International</span></div>
+        <div class="info-row"><span class="info-key">Formation</span><span class="info-val">UVCI · UTA · We.Code</span></div>
         <div class="info-row"><span class="info-key">Email</span><span class="info-val"><a href="mailto:coulzak14@gmail.com">coulzak14@gmail.com</a></span></div>
         <div class="info-row"><span class="info-key">GitHub</span><span class="info-val"><a href="https://github.com/hack1-z" target="_blank">hack1-z</a></span></div>
+        <div class="info-row"><span class="info-key">Credly</span><span class="info-val"><a href="https://www.credly.com/users/cayeniga-anthelme" target="_blank">Voir mes badges</a></span></div>
+        <div class="info-row"><span class="info-key">LinkedIn</span><span class="info-val"><a href="https://www.linkedin.com/in/cayeniga-anthelme" target="_blank">Mon profil</a></span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BIG INTERACTIVE TERMINAL -->
-<section id="terminal-section">
-  <div class="section-label">02 — Terminal</div>
-  <h2 class="section-title">Dans mon terminal quotidien</h2>
-
-  <div class="terminal-big fade-in">
-    <div class="terminal-topbar">
-      <span class="t-dot red"></span><span class="t-dot yellow"></span><span class="t-dot green"></span>
-      <span class="terminal-title">hecker@kali-linux ~ — bash</span>
-      <div class="terminal-tabs">
-        <button class="ttab active" onclick="switchTab(this,'tab-soc')">SOC / Blue Team</button>
-        <button class="ttab" onclick="switchTab(this,'tab-recon')">Recon</button>
-        <button class="ttab" onclick="switchTab(this,'tab-network')">Réseau</button>
-        <button class="ttab" onclick="switchTab(this,'tab-python')">Python</button>
-      </div>
+<!-- TECH SKILLS -->
+<section id="tech-skills">
+  <div class="section-label">02 - Stack Technique</div>
+  <h2 class="section-title">Compétences & Expertise</h2>
+  
+  <div class="skills-category fade-in">
+    <h3>🛡️ Sécurité & SOC</h3>
+    <div class="skills-grid-detailed">
+      <div class="skill-item"><span class="skill-icon-large">🔵</span><div class="skill-content"><div class="skill-name">Wazuh · Suricata</div><div class="skill-desc">Installation, configuration, règles personnalisées, analyse d'alertes</div></div></div>
+      <div class="skill-item"><span class="skill-icon-large">📊</span><div class="skill-content"><div class="skill-name">Analyse de logs · SIEM</div><div class="skill-desc">Corrélation d'événements, détection de menaces, investigation</div></div></div>
+      <div class="skill-item"><span class="skill-icon-large">🔍</span><div class="skill-content"><div class="skill-name">NIST CSF · ISO 27001</div><div class="skill-desc">Application des frameworks, évaluation des risques, GRC</div></div></div>
+      <div class="skill-item"><span class="skill-icon-large">🕵️</span><div class="skill-content"><div class="skill-name">OSSTMM · PTES</div><div class="skill-desc">Méthodologies de test d'intrusion, reporting</div></div></div>
+      <div class="skill-item"><span class="skill-icon-large">🔐</span><div class="skill-content"><div class="skill-name">PKI/TLS · AES-256/HMAC</div><div class="skill-desc">Cryptographie, gestion des certificats, chiffrement</div></div></div>
     </div>
-    <div class="terminal-content">
+  </div>
 
-      <div class="t-tab active" id="tab-soc">
-        <div class="t-line"><span class="t-dim"># ═══ SOC ANALYST — Threat Detection &amp; SIEM ═══</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">hecker@soc</span><span class="t-dim">:~$ </span><span class="t-cmd">systemctl status wazuh-agent</span></div>
-        <div class="t-line"><span class="t-green">● wazuh-agentd    Active: active (running) since 2026-03-05</span></div>
-        <div class="t-line"><span class="t-green">● wazuh-syscheckd Active: active (running)</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">cayeniga@soc</span><span class="t-dim">:~$ </span><span class="t-cmd">tail -f /var/ossec/logs/alerts.json | jq .</span></div>
-        <div class="t-line"><span class="t-out">{</span></div>
-        <div class="t-line"><span class="t-out">  </span><span class="t-blue">"rule"</span><span class="t-out">: { </span><span class="t-blue">"level"</span><span class="t-out">: 12, </span><span class="t-blue">"description"</span><span class="t-out">: </span><span class="t-orange">"SSH brute-force attempt"</span><span class="t-out"> },</span></div>
-        <div class="t-line"><span class="t-out">  </span><span class="t-blue">"srcip"</span><span class="t-out">: </span><span class="t-red">"185.220.101.47"</span><span class="t-out">,  </span><span class="t-blue">"attempts"</span><span class="t-out">: </span><span class="t-red">432</span></div>
-        <div class="t-line"><span class="t-out">}</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">cayeniga@soc</span><span class="t-dim">:~$ </span><span class="t-cmd">suricata -r capture.pcap -l /var/log/suricata/</span></div>
-        <div class="t-line"><span class="t-green">[**] ET SCAN Nmap SYN Scan detected — 192.168.1.102</span></div>
-        <div class="t-line"><span class="t-red">[**] ET MALWARE C2 Beacon Traffic — Alert level HIGH</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">cayeniga@soc</span><span class="t-dim">:~$ </span><span class="t-cmd">iptables -A INPUT -s 185.220.101.47 -j DROP &amp;&amp; echo "✓ IP bloquée"</span></div>
-        <div class="t-line"><span class="t-green">✓ IP bloquée — Incident logged in Chronicle</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">cayeniga@soc</span><span class="t-dim">:~$ </span><span class="typed-cursor"></span></div>
-      </div>
+  <div class="skills-category fade-in">
+    <h3>🌐 Réseaux</h3>
+    <div class="skills-grid-detailed">
+      <div class="skill-item"><span class="skill-icon-large">📡</span><div class="skill-content"><div class="skill-name">Cisco Packet Tracer</div><div class="skill-desc">Simulation réseaux complexes, VLAN, OSPF, DHCP, DMZ</div></div></div>
+      <div class="skill-item"><span class="skill-icon-large">🔌</span><div class="skill-content"><div class="skill-name">VLAN · VLSM · OSPF</div><div class="skill-desc">Segmentation, adressage, routage dynamique</div></div></div>
+      <div class="skill-item"><span class="skill-icon-large">🛜</span><div class="skill-content"><div class="skill-name">WPA2 · PPP/CHAP</div><div class="skill-desc">Sécurité Wi-Fi, authentification, VPN</div></div></div>
+      <div class="skill-item"><span class="skill-icon-large">🔒</span><div class="skill-content"><div class="skill-name">OpenVPN · Easy-RSA</div><div class="skill-desc">Configuration serveur/client, gestion des certificats</div></div></div>
+      <div class="skill-item"><span class="skill-icon-large">📦</span><div class="skill-content"><div class="skill-name">Wireshark · tcpdump</div><div class="skill-desc">Analyse de paquets, capture et filtrage</div></div></div>
+    </div>
+  </div>
 
-      <div class="t-tab" id="tab-recon">
-        <div class="t-line"><span class="t-dim"># ═══ ETHICAL HACKING — Pentest &amp; Recon ═══</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">hecker@kali</span><span class="t-dim">:~$ </span><span class="t-cmd">nmap -sV -sC --open 192.168.1.0/24</span></div>
-        <div class="t-line"><span class="t-green">Nmap scan report for 192.168.1.1</span></div>
-        <div class="t-line"><span class="t-out">PORT     STATE  SERVICE   VERSION</span></div>
-        <div class="t-line"><span class="t-orange">22/tcp   open   ssh       OpenSSH 8.9p1</span></div>
-        <div class="t-line"><span class="t-orange">80/tcp   open   http      Apache 2.4.54</span></div>
-        <div class="t-line"><span class="t-red">443/tcp  open   https     SSL cert EXPIRED — CVE-2023-0286</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">hecker@kali</span><span class="t-dim">:~$ </span><span class="t-cmd">nikto -h http://192.168.1.1</span></div>
-        <div class="t-line"><span class="t-red">+ /admin/ : Login panel found (default creds risk)</span></div>
-        <div class="t-line"><span class="t-orange">+ OSVDB-3092: /backup/ : Directory indexing enabled</span></div>
-        <div class="t-line"><span class="t-red">+ X-Frame-Options header missing — Clickjacking risk</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">hecker@kali</span><span class="t-dim">:~$ </span><span class="t-cmd">cat report_pentest.txt | grep "CRITICAL"</span></div>
-        <div class="t-line"><span class="t-red">[CRITICAL] Outdated SSL/TLS — Immediate patch required</span></div>
-        <div class="t-line"><span class="t-red">[CRITICAL] Default credentials on admin panel</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">hecker@kali</span><span class="t-dim">:~$ </span><span class="typed-cursor"></span></div>
-      </div>
+  <div class="skills-category fade-in">
+    <h3>💻 Programmation & Operating System</h3>
+    <div class="skills-grid-detailed">
+      <div class="skill-item"><span class="skill-icon-large">🐍</span><div class="skill-content"><div class="skill-name">Python 3</div><div class="skill-desc">Scripts d'automatisation, scraping (Requests, BeautifulSoup4), pwntools</div></div></div>
+      <div class="skill-item"><span class="skill-icon-large">🐧</span><div class="skill-content"><div class="skill-name">Linux · Bash/CLI</div><div class="skill-desc">Kali, Ubuntu, Parrot, Debian, administration système, systemd</div></div></div>
+      <div class="skill-item"><span class="skill-icon-large">📊</span><div class="skill-content"><div class="skill-name">SQL · Power BI</div><div class="skill-desc">Requêtes SQL, modélisation de données, DAX, visualisation</div></div></div>
+      <div class="skill-item"><span class="skill-icon-large">⚙️</span><div class="skill-content"><div class="skill-name">YAML · Bash</div><div class="skill-desc">Configuration, scripting, automatisation</div></div></div>
+    </div>
+  </div>
 
-      <div class="t-tab" id="tab-network">
-        <div class="t-line"><span class="t-dim"># ═══ RÉSEAUX — Config &amp; Diagnostic ═══</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">cayeniga@router</span><span class="t-dim">:~$ </span><span class="t-cmd">ip route show table all</span></div>
-        <div class="t-line"><span class="t-out">default via 192.168.1.1 dev eth0</span></div>
-        <div class="t-line"><span class="t-out">192.168.10.0/24 dev vlan10  — VLAN RH</span></div>
-        <div class="t-line"><span class="t-out">192.168.20.0/24 dev vlan20  — VLAN IT</span></div>
-        <div class="t-line"><span class="t-out">192.168.30.0/24 dev vlan30  — VLAN DMZ</span></div>
-        <div class="t-line"><span class="t-out">10.0.0.0/8      dev tun0    — VPN Tunnel</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">cayeniga@router</span><span class="t-dim">:~$ </span><span class="t-cmd">openvpn --config client.ovpn --daemon</span></div>
-        <div class="t-line"><span class="t-green">Initialization Sequence Completed — VPN UP ✓</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">cayeniga@router</span><span class="t-dim">:~$ </span><span class="t-cmd">tcpdump -i eth0 -n port 443 -c 5</span></div>
-        <div class="t-line"><span class="t-out">14:05:01 IP 192.168.20.50.51200 > 93.184.216.34.443 [S]</span></div>
-        <div class="t-line"><span class="t-out">14:05:01 IP 93.184.216.34.443 > 192.168.20.50.51200 [S.]</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">cayeniga@router</span><span class="t-dim">:~$ </span><span class="t-cmd">ping -c 3 africa.future 🌍</span></div>
-        <div class="t-line"><span class="t-green">3 packets transmitted, 3 received, 0% loss, time 2.1ms</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">cayeniga@router</span><span class="t-dim">:~$ </span><span class="typed-cursor"></span></div>
-      </div>
-
-      <div class="t-tab" id="tab-python">
-        <div class="t-line"><span class="t-dim"># ═══ PYTHON — Scripts Sécurité &amp; Automation ═══</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">hecker@kali</span><span class="t-dim">:~$ </span><span class="t-cmd">python3 port_scanner.py --target 192.168.1.1</span></div>
-        <div class="t-line"><span class="t-blue">[*] Scanning 192.168.1.1 (ports 1–1024)...</span></div>
-        <div class="t-line"><span class="t-green">[+] 22/tcp  OPEN — ssh</span></div>
-        <div class="t-line"><span class="t-green">[+] 80/tcp  OPEN — http</span></div>
-        <div class="t-line"><span class="t-green">[+] 443/tcp OPEN — https</span></div>
-        <div class="t-line"><span class="t-out">[i] Done in 3.47s — 3 ports open</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">cayeniga@dev</span><span class="t-dim">:~$ </span><span class="t-cmd">python3 chatbot.py --port 5000</span></div>
-        <div class="t-line"><span class="t-blue"> Chatbot NLP engine initialized</span></div>
-        <div class="t-line"><span class="t-green"> Listening on http://0.0.0.0:5000 ✓</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">cayeniga@dev</span><span class="t-dim">:~$ </span><span class="t-cmd">python3 sql_query.py --db security.db</span></div>
-        <div class="t-line"><span class="t-blue">[*] SELECT * FROM incidents WHERE severity='critical';</span></div>
-        <div class="t-line"><span class="t-out">  id | date       | type        | status</span></div>
-        <div class="t-line"><span class="t-orange">  12 | 2026-03-01 | Brute Force | Resolved</span></div>
-        <div class="t-line"><span class="t-orange">  15 | 2026-03-03 | Malware     | Investigating</span></div>
-        <div class="t-line">&nbsp;</div>
-        <div class="t-line"><span class="t-prompt">cayeniga@dev</span><span class="t-dim">:~$ </span><span class="typed-cursor"></span></div>
-      </div>
-
+  <div class="skills-category fade-in">
+    <h3>📜 Certifications en cours</h3>
+    <div class="skills-grid-detailed">
+      <div class="skill-item" style="border-left: 4px solid var(--accent2);"><span class="skill-icon-large">⏳</span><div class="skill-content"><div class="skill-name">Certified Cybersecurity (CC) - ISC2</div><div class="skill-desc">En préparation · Fondamentaux de la sécurité</div></div></div>
+      <div class="skill-item" style="border-left: 4px solid var(--accent3);"><span class="skill-icon-large">⏳</span><div class="skill-content"><div class="skill-name">CEH · CCNA · Security+</div><div class="skill-desc">Parcours de certification en cours</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label">03 — Compétences</div>
-  <h2 class="section-title">Expertises Techniques</h2>
-  <div class="skills-grid">
-    <div class="skill-card fade-in"><div class="skill-icon">🔵</div><div class="skill-card-title">Blue Team / SOC</div><div class="skill-tags"><span class="skill-tag">Détection menaces</span><span class="skill-tag">Incident Response</span><span class="skill-tag">SIEM</span><span class="skill-tag">Log Analysis</span><span class="skill-tag">Threat Hunting</span></div></div>
-    <div class="skill-card fade-in"><div class="skill-icon">🛡️</div><div class="skill-card-title">Cybersécurité</div><div class="skill-tags"><span class="skill-tag">Ethical Hacking</span><span class="skill-tag">Pentesting</span><span class="skill-tag">GRC / NIST CSF</span><span class="skill-tag">Audit sécurité</span><span class="skill-tag">Data Protection</span></div></div>
-    <div class="skill-card fade-in"><div class="skill-icon">⚙️</div><div class="skill-card-title">Outils SIEM</div><div class="skill-tags"><span class="skill-tag">Wazuh</span><span class="skill-tag">Suricata</span><span class="skill-tag">Nexus</span><span class="skill-tag">Google Chronicle</span><span class="skill-tag">OpenVPN</span></div></div>
-    <div class="skill-card fade-in"><div class="skill-icon">🌐</div><div class="skill-card-title">Réseaux</div><div class="skill-tags"><span class="skill-tag">VLAN · OSPF</span><span class="skill-tag">DHCP · DMZ</span><span class="skill-tag">VLSM</span><span class="skill-tag">Wi-Fi sécurisé</span><span class="skill-tag">Cisco Packet Tracer</span></div></div>
-    <div class="skill-card fade-in"><div class="skill-icon">💻</div><div class="skill-card-title">Systèmes & Prog.</div><div class="skill-tags"><span class="skill-tag">Kali Linux</span><span class="skill-tag">Ubuntu · Parrot</span><span class="skill-tag">Debian · Windows</span><span class="skill-tag">Python</span><span class="skill-tag">HTML/CSS · SQL</span></div></div>
-    <div class="skill-card fade-in"><div class="skill-icon">☁️</div><div class="skill-card-title">Cloud & IA</div><div class="skill-tags"><span class="skill-tag">Cloud Computing</span><span class="skill-tag">IA Moderne</span><span class="skill-tag">Blockchain</span><span class="skill-tag">IoT Security</span></div></div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
+<!-- PROJECTS - 8 PROJETS CONCRETS -->
 <section id="projects">
-  <div class="section-label">04 — Projets</div>
-  <h2 class="section-title">Projets Majeurs</h2>
+  <div class="section-label">03 - Projets Concrets (8 réalisations)</div>
+  <h2 class="section-title">Mes Projets Techniques</h2>
   <div class="projects-grid">
-    <div class="project-card fade-in"><div class="project-num">01</div><div class="project-title">SIEM Tools — Installation & Tutoriels</div><p class="project-desc">Installation et prise en main d'outils SIEM : Wazuh, Suricata, Chronicle. Rédaction de tutoriels pour la communauté cybersec francophone.</p><div class="project-tech"><span class="tech-tag">Wazuh</span><span class="tech-tag">Suricata</span><span class="tech-tag">Chronicle</span><span class="tech-tag">Blue Team</span></div></div>
-    <div class="project-card fade-in"><div class="project-num">02</div><div class="project-title">Audit de Sécurité — NIST CSF</div><p class="project-desc">Application du cadre NIST CSF à un SI fictif. Identification de vulnérabilités, évaluation des risques et propositions de mesures correctives.</p><div class="project-tech"><span class="tech-tag">NIST CSF</span><span class="tech-tag">GRC</span><span class="tech-tag">Risk Assessment</span></div></div>
-    <div class="project-card fade-in"><div class="project-num">03</div><div class="project-title">Simulation Réseau Complexe</div><p class="project-desc">Architectures réseaux complètes sur Cisco Packet Tracer : VLAN, OSPF, DMZ, VPN OpenVPN, proxy et subnetting VLSM.</p><div class="project-tech"><span class="tech-tag">Cisco PT</span><span class="tech-tag">VLAN</span><span class="tech-tag">OSPF</span><span class="tech-tag">DMZ</span><span class="tech-tag">OpenVPN</span></div></div>
-    <div class="project-card fade-in"><div class="project-num">04</div><div class="project-title">Analyse de Données SQL</div><p class="project-desc">Interrogation et manipulation de bases de données complexes pour analyses de sécurité, corrélation d'événements et reporting d'incidents.</p><div class="project-tech"><span class="tech-tag">SQL</span><span class="tech-tag">Data Analysis</span><span class="tech-tag">DB Security</span></div></div>
-    <div class="project-card fade-in"><div class="project-num">05</div><div class="project-title">Hackathon Future Studio — MVP</div><p class="project-desc">Création d'un MVP fonctionnel en 3 jours avec Intergravity AI. Introduction au "vibe coding" sous contrainte de temps.</p><div class="project-tech"><span class="tech-tag">Intergravity AI</span><span class="tech-tag">MVP</span><span class="tech-tag">Vibe Coding</span></div></div>
-    <div class="project-card fade-in"><div class="project-num">06</div><div class="project-title">Chatbot Python — Intégration Web</div><p class="project-desc">Développement d'un chatbot conversationnel en Python avec logique NLP, conçu pour intégration dans des interfaces web.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">NLP</span><span class="tech-tag">PyCharm</span><span class="tech-tag">Web Integration</span></div></div>
+    <!-- PROJET 1 -->
+    <div class="project-card fade-in">
+      <div class="project-num">01</div>
+      <div class="project-title">Déploiement SIEM complet avec Wazuh</div>
+      <div class="project-context">🔍 Contexte : Laboratoire personnel SOC</div>
+      <p class="project-desc">Installation et configuration de Wazuh (manager, indexer, dashboard) avec 3 agents sous Linux et Windows. Création de règles personnalisées pour détecter des tentatives de brute-force SSH et des modifications de fichiers critiques.</p>
+      <div class="project-learned"><strong>📚 Apprentissages :</strong> Architecture SIEM, corrélation d'alertes, configuration d'agents, analyse de logs en temps réel.</div>
+      <div class="project-tech"><span class="tech-tag">Wazuh</span><span class="tech-tag">Linux</span><span class="tech-tag">Systemd</span><span class="tech-tag">YAML</span><span class="tech-tag">Log analysis</span></div>
+    </div>
+    
+    <!-- PROJET 2 -->
+    <div class="project-card fade-in">
+      <div class="project-num">02</div>
+      <div class="project-title">Suricata IDS/IPS - Règles et alertes</div>
+      <div class="project-context">🔍 Contexte : Détection d'intrusions réseau</div>
+      <p class="project-desc">Installation de Suricata en mode IDS, création de règles personnalisées pour détecter des scans Nmap, tentatives d'exploitation et trafic C2. Intégration avec Elasticsearch pour la visualisation des alertes.</p>
+      <div class="project-learned"><strong>📚 Apprentissages :</strong> Écriture de règles Suricata, analyse de trafic réseau, détection de patterns malveillants.</div>
+      <div class="project-tech"><span class="tech-tag">Suricata</span><span class="tech-tag">Elasticsearch</span><span class="tech-tag">Kibana</span><span class="tech-tag">PCAP</span></div>
+    </div>
+    
+    <!-- PROJET 3 -->
+    <div class="project-card fade-in">
+      <div class="project-num">03</div>
+      <div class="project-title">Audit de sécurité NIST CSF</div>
+      <div class="project-context">🏢 Contexte : Simulation d'audit pour PME fictive</div>
+      <p class="project-desc">Application complète du cadre NIST Cybersecurity Framework (Identify, Protect, Detect, Respond, Recover). Identification des actifs critiques, évaluation des risques, rédaction d'un rapport d'audit de 25 pages avec recommandations prioritaires.</p>
+      <div class="project-learned"><strong>📚 Apprentissages :</strong> GRC, analyse de risques, documentation de sécurité, méthodologie d'audit.</div>
+      <div class="project-tech"><span class="tech-tag">NIST CSF</span><span class="tech-tag">ISO 27001</span><span class="tech-tag">Risk Assessment</span><span class="tech-tag">GRC</span></div>
+    </div>
+    
+    <!-- PROJET 4 -->
+    <div class="project-card fade-in">
+      <div class="project-num">04</div>
+      <div class="project-title">Réseau d'entreprise segmenté (VLAN/OSPF/DMZ)</div>
+      <div class="project-context">🌐 Contexte : Architecture réseau sécurisée</div>
+      <p class="project-desc">Conception sur Cisco Packet Tracer d'un réseau d'entreprise avec 4 VLANs (RH, IT, DMZ, Admin), routage inter-VLAN OSPF, serveurs DHCP, pare-feu, et DMZ hébergeant un serveur web. Tests de connectivité et segmentation.</p>
+      <div class="project-learned"><strong>📚 Apprentissages :</strong> Conception réseau, routage dynamique, segmentation, sécurité périmétrique.</div>
+      <div class="project-tech"><span class="tech-tag">Cisco PT</span><span class="tech-tag">VLAN</span><span class="tech-tag">OSPF</span><span class="tech-tag">DHCP</span><span class="tech-tag">DMZ</span></div>
+    </div>
+    
+    <!-- PROJET 5 -->
+    <div class="project-card fade-in">
+      <div class="project-num">05</div>
+      <div class="project-title">VPN Site-à-Site avec OpenVPN & PKI</div>
+      <div class="project-context">🔐 Contexte : Connexion sécurisée de sites distants</div>
+      <p class="project-desc">Mise en place d'une infrastructure VPN site-à-site avec OpenVPN. Création d'une autorité de certification avec Easy-RSA, génération de certificats, configuration des serveurs et clients. Tests de chiffrement et d'authentification.</p>
+      <div class="project-learned"><strong>📚 Apprentissages :</strong> PKI, gestion de certificats, configuration VPN, chiffrement TLS.</div>
+      <div class="project-tech"><span class="tech-tag">OpenVPN</span><span class="tech-tag">Easy-RSA</span><span class="tech-tag">PKI</span><span class="tech-tag">TLS</span><span class="tech-tag">AES-256</span></div>
+    </div>
+    
+    <!-- PROJET 6 -->
+    <div class="project-card fade-in">
+      <div class="project-num">06</div>
+      <div class="project-title">Analyse de logs et détection de patterns</div>
+      <div class="project-context">📊 Contexte : Détection d'attaques par analyse de logs</div>
+      <p class="project-desc">Scripts Python pour analyser des fichiers de logs (auth.log, apache/access.log) et détecter des patterns d'attaques : brute-force, scans directory, requêtes suspectes. Création de visualisations Power BI pour le reporting.</p>
+      <div class="project-learned"><strong>📚 Apprentissages :</strong> Analyse de logs, regex, détection de patterns, visualisation de données.</div>
+      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Regex</span><span class="tech-tag">Power BI</span><span class="tech-tag">DAX</span><span class="tech-tag">CSV</span></div>
+    </div>
+    
+    <!-- PROJET 7 -->
+    <div class="project-card fade-in">
+      <div class="project-num">07</div>
+      <div class="project-title">Scripts d'automatisation sécurité en Python</div>
+      <div class="project-context">🤖 Contexte : Automatisation de tâches répétitives</div>
+      <p class="project-desc">Développement de scripts Python pour : scan de ports, collecte automatique de logs, envoi d'alertes par email, vérification d'intégrité de fichiers. Utilisation de bibliothèques comme requests, schedule, hashlib.</p>
+      <div class="project-learned"><strong>📚 Apprentissages :</strong> Programmation Python, automatisation, intégration de scripts.</div>
+      <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Requests</span><span class="tech-tag">Schedule</span><span class="tech-tag">Hashlib</span></div>
+    </div>
+    
+    <!-- PROJET 8 - POWER BI CYBERSECURITY DASHBOARD (NOUVEAU) -->
+    <div class="project-card fade-in">
+      <div class="project-num">08</div>
+      <div class="project-title">Power BI Cybersecurity Dashboard</div>
+      <div class="project-context">📊 Contexte : Visualisation de données de sécurité</div>
+      <p class="project-desc">Création d'un tableau de bord interactif Power BI pour visualiser des logs de sécurité. Modélisation de données à partir de fichiers CSV (logs d'alertes, tentatives de connexion). Création de KPIs (nombre d'incidents, sévérité, tendances) et de graphiques dynamiques pour le reporting.</p>
+      <div class="project-learned"><strong>📚 Apprentissages :</strong> Modélisation de données, DAX, création de KPIs, import CSV, visualisation de données de sécurité.</div>
+      <div class="project-tech"><span class="tech-tag">Power BI</span><span class="tech-tag">DAX</span><span class="tech-tag">KPI</span><span class="tech-tag">CSV import</span><span class="tech-tag">Data modeling</span><span class="tech-tag">Data visualization</span></div>
+    </div>
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
+<!-- LABORATOIRES PRATIQUES -->
+<section id="labs">
+  <div class="section-label">04 - Laboratoires Pratiques</div>
+  <h2 class="section-title">Environnements d'expérimentation</h2>
+  <div class="labs-grid">
+    <div class="lab-card fade-in">
+      <div class="lab-icon">🖥️</div>
+      <div class="lab-title">SOC à Domicile</div>
+      <p class="lab-desc">Mise en place d'un SOC personnel avec Wazuh, TheHive et Cortex. Corrélation d'alertes et simulation d'incidents.</p>
+      <div class="lab-tools"><span class="tech-tag">Wazuh</span><span class="tech-tag">TheHive</span><span class="tech-tag">Cortex</span></div>
+    </div>
+    <div class="lab-card fade-in">
+      <div class="lab-icon">🌐</div>
+      <div class="lab-title">Laboratoire Réseau Sécurisé</div>
+      <p class="lab-desc">Architecture complète avec firewall, DMZ, VLANs et VPN. Tests de pénétration sur le réseau interne.</p>
+      <div class="lab-tools"><span class="tech-tag">pfSense</span><span class="tech-tag">OpenVPN</span><span class="tech-tag">Kali</span></div>
+    </div>
+    <div class="lab-card fade-in">
+      <div class="lab-icon">🔍</div>
+      <div class="lab-title">Chasse aux Menaces</div>
+      <p class="lab-desc">Analyse de logs réels (captures réseau) pour identifier des IoCs. Utilisation de Suricata et scripts Python.</p>
+      <div class="lab-tools"><span class="tech-tag">Suricata</span><span class="tech-tag">Python</span><span class="tech-tag">Wireshark</span></div>
+    </div>
+    <div class="lab-card fade-in">
+      <div class="lab-icon">🔐</div>
+      <div class="lab-title">Cryptographie & PKI</div>
+      <p class="lab-desc">Mise en place d'une autorité de certification avec OpenSSL, génération de certificats, configuration HTTPS.</p>
+      <div class="lab-tools"><span class="tech-tag">OpenSSL</span><span class="tech-tag">PKI</span><span class="tech-tag">TLS</span></div>
+    </div>
+    <div class="lab-card fade-in">
+      <div class="lab-icon">📊</div>
+      <div class="lab-title">Visualisation de Logs</div>
+      <p class="lab-desc">Création de dashboards Power BI pour visualiser des logs de sécurité et détecter des tendances.</p>
+      <div class="lab-tools"><span class="tech-tag">Power BI</span><span class="tech-tag">CSV</span><span class="tech-tag">DAX</span></div>
+    </div>
+    <div class="lab-card fade-in">
+      <div class="lab-icon">🐍</div>
+      <div class="lab-title">Automatisation Python</div>
+      <p class="lab-desc">Scripts pour automatiser la collecte de logs, l'analyse et l'envoi d'alertes par email.</p>
+      <div class="lab-tools"><span class="tech-tag">Python</span><span class="tech-tag">smtplib</span><span class="tech-tag">schedule</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS À JOUR -->
 <section id="certifications">
-  <div class="section-label">05 — Certifications</div>
+  <div class="section-label">05 - Certifications</div>
   <div class="certs-header">
-    <h2 class="section-title" style="margin-bottom:0;">Certifications</h2>
-    <div style="text-align:right;"><div class="cert-count">32+</div><div class="cert-count-label">CISCO · UNICEF · HP · Cybastion</div></div>
+    <h2 class="section-title" style="margin-bottom:0;">Certifications Obtenues</h2>
+    <div style="text-align:right;"><div class="cert-count">33+</div><div class="cert-count-label">CISCO · Google · UNICEF · HP</div></div>
   </div>
   <div class="certs-list">
+    <div class="cert-item cert-highlight fade-in">
+      <div><div class="cert-name">Google Cybersecurity Professional Certificate</div><div class="cert-issuer">Google / Coursera</div></div>
+      <div class="cert-date">Récent</div>
+    </div>
     <div class="cert-item fade-in"><div><div class="cert-name">Introduction to Cybersecurity</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">09 déc. 2024</div></div>
     <div class="cert-item fade-in"><div><div class="cert-name">Introduction to IoT and Digital Transformation</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">30 déc. 2024</div></div>
     <div class="cert-item fade-in"><div><div class="cert-name">Operating Systems Basics</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">14 mar. 2025</div></div>
@@ -661,18 +665,19 @@
     <div class="cert-item fade-in"><div><div class="cert-name">Digital Awareness [ToT]</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">01 sep. 2025</div></div>
     <div class="cert-item fade-in"><div><div class="cert-name">Networking Basics [CCSTNET1]</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">16 sep. 2025</div></div>
     <div class="cert-item fade-in"><div><div class="cert-name">Networking Devices and Initial Configuration</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">18 sep. 2025</div></div>
-    <div class="cert-item fade-in"><div><div class="cert-name">Network Addressing &amp; Troubleshooting</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">23 sep. 2025</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Network Addressing & Troubleshooting</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">23 sep. 2025</div></div>
     <div class="cert-item fade-in"><div><div class="cert-name">Network Support and Security</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">24 sep. 2025</div></div>
     <div class="cert-item fade-in"><div><div class="cert-name">Apply AI: Analyze Customer Reviews</div><div class="cert-issuer">HP / YOMA</div></div><div class="cert-date">15 oct. 2025</div></div>
-    <div class="cert-item fade-in"><div><div class="cert-name">Digital Safety &amp; Security Awareness (#NetAcadCup)</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">14 jan. 2026</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Digital Safety & Security Awareness (#NetAcadCup)</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">14 jan. 2026</div></div>
     <div class="cert-item fade-in"><div><div class="cert-name">Introduction to Cybersecurity (#NetAcadCup)</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">14 jan. 2026</div></div>
-    <div class="cert-item fade-in"><div><div class="cert-name">Intro IoT &amp; Digital Transformation (#NetAcadCup)</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">14 jan. 2026</div></div>
+    <div class="cert-item fade-in"><div><div class="cert-name">Intro IoT & Digital Transformation (#NetAcadCup)</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">14 jan. 2026</div></div>
     <div class="cert-item fade-in"><div><div class="cert-name">Networking Basics (#NetAcadCup)</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">14 jan. 2026</div></div>
     <div class="cert-item fade-in"><div><div class="cert-name">Industrial Networking Essentials (#NetAcadCup)</div><div class="cert-issuer">CISCO NetAcad</div></div><div class="cert-date">05 fév. 2026</div></div>
   </div>
   <div class="upcoming-certs fade-in">
-    <div class="upcoming-title">🎯 En Préparation</div>
+    <div class="upcoming-title">🎯 En Préparation Active</div>
     <div class="upcoming-list">
+      <span class="upcoming-item">Certified Cybersecurity (CC) - ISC2</span>
       <span class="upcoming-item">CEH - Certified Ethical Hacker</span>
       <span class="upcoming-item">CCNA</span>
       <span class="upcoming-item">CompTIA Security+</span>
@@ -682,8 +687,8 @@
 
 <!-- ENGAGEMENT -->
 <section id="engagement">
-  <div class="section-label">06 — Engagements</div>
-  <h2 class="section-title">Impact &amp; Communauté</h2>
+  <div class="section-label">06 - Engagements</div>
+  <h2 class="section-title">Impact & Communauté</h2>
   <div class="engage-grid">
     <div class="engage-card fade-in"><div class="engage-org">UNICEF / YOMA</div><div class="engage-role">Ambassadeur YOMA</div><p class="engage-desc">Promotion de l'employabilité des jeunes ivoiriens. Accès aux formations et opportunités professionnelles pour la jeunesse africaine.</p></div>
     <div class="engage-card fade-in"><div class="engage-org">The Way Out</div><div class="engage-role">Ambassadeur & Assistant Technique</div><p class="engage-desc">Accompagnement de projets sociaux innovants. Support technique pour des initiatives à impact positif.</p></div>
@@ -699,42 +704,43 @@
   <div class="cv-bg-pattern"></div>
   <div class="cv-glow"></div>
   <div class="cv-content">
-    <div class="cv-eyebrow">Mon CV & Ma Vision</div>
-    <h2 class="cv-title">Analyste Cybersécurité Junior<br/><span style="color:var(--accent)">Disponible Maintenant</span></h2>
+    <div class="cv-eyebrow">Mon Parcours & Ma Vision</div>
+    <h2 class="cv-title">Futur Analyste SOC<br/><span style="color:var(--accent)">Disponible Immédiatement</span></h2>
     <div class="cv-slogan">"Protéger le numérique, Éduquer les esprits, Construire l'Afrique de demain."</div>
-    <p class="cv-tagline">Blue Team · SOC · GRC · Ethical Hacking<br/>Emploi · Stage · Côte d'Ivoire · International · Remote</p>
+    <p class="cv-tagline">Blue Team · SOC · Détection des menaces · Incident Response · Power BI<br/>Côte d'Ivoire · Remote · International</p>
     <div class="cv-actions">
-      <a href="mailto:coulzak14@gmail.com?subject=Demande%20de%20CV%20-%20Analyste%20Cybersécurité%20Junior&body=Bonjour%20Cayeniga%2C%0A%0AJe%20souhaite%20recevoir%20votre%20CV%20complet%20pour%20un%20poste%20d%27analyste%20cybersécurité%20junior." class="btn-primary">📧 Demander mon CV complet</a>
-      <a href="https://wa.me/2250507647326" target="_blank" class="btn-outline">💬 WhatsApp</a>
-      <a href="https://www.credly.com/users/cayeniga-anthelme" target="_blank" class="btn-outline">🏅 Mes Badges Credly</a>
+      <a href="mailto:coulzak14@gmail.com?subject=Demande%20de%20CV%20-%20Futur%20Analyste%20SOC&body=Bonjour%20Cayeniga%2C%0A%0AJe%20souhaite%20recevoir%20votre%20CV%20pour%20un%20poste%20d%27analyste%20SOC%20junior." class="btn-primary">📧 Demander mon CV</a>
+      <a href="https://wa.me/2250507647326" target="_blank" class="btn-outline">💬 WhatsApp direct</a>
+      <a href="https://www.credly.com/users/cayeniga-anthelme" target="_blank" class="btn-outline">🏅 Badges Credly</a>
     </div>
     <div class="cv-stripe">
-      <div class="cv-fact"><div class="cv-fact-num">32+</div><div class="cv-fact-label">Certifications</div></div>
-      <div class="cv-fact"><div class="cv-fact-num">6</div><div class="cv-fact-label">Projets</div></div>
+      <div class="cv-fact"><div class="cv-fact-num">33+</div><div class="cv-fact-label">Certifications</div></div>
+      <div class="cv-fact"><div class="cv-fact-num">8</div><div class="cv-fact-label">Projets</div></div>
       <div class="cv-fact"><div class="cv-fact-num">5+</div><div class="cv-fact-label">Organisations</div></div>
-      <div class="cv-fact"><div class="cv-fact-num">3</div><div class="cv-fact-label">Certifs en cours</div></div>
-      <div class="cv-fact"><div class="cv-fact-num">2+</div><div class="cv-fact-label">Ans d'expérience</div></div>
+      <div class="cv-fact"><div class="cv-fact-num">4</div><div class="cv-fact-label">Certifs en cours</div></div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-label">07 — Contact</div>
+  <div class="section-label">07 - Contact</div>
   <h2 class="section-title">Travaillons Ensemble</h2>
   <div class="contact-wrapper">
     <div class="contact-left fade-in">
-      <p>Que vous cherchiez un <strong>Analyste Cybersécurité Junior</strong> pour votre SOC, un formateur en sécurité numérique, ou un partenaire pour un projet innovant — je suis disponible immédiatement en Côte d'Ivoire, à l'international et en remote.</p>
+      <p>Vous recherchez un <strong>Analyste SOC Junior motivé</strong> pour votre équipe ? Je suis disponible immédiatement pour des opportunités en <strong>Côte d'Ivoire, à distance ou à l'international</strong>.</p>
+      <p>Passionné par la détection des menaces et l'amélioration continue, je suis prêt à contribuer à la sécurité de votre SI avec mes 8 projets concrets et 33+ certifications.</p>
       <div class="contact-links">
         <a href="mailto:coulzak14@gmail.com" class="contact-link"><span class="contact-link-icon">📧</span><div><span class="contact-link-label">Email</span>coulzak14@gmail.com</div></a>
-        <a href="https://wa.me/2250507647326" class="contact-link" target="_blank"><span class="contact-link-icon">💬</span><div><span class="contact-link-label">WhatsApp</span>+225 05 07 64 73 26</div></a>
-        <a href="tel:+2250720315288" class="contact-link"><span class="contact-link-icon">📞</span><div><span class="contact-link-label">Appel</span>+225 07 20 31 52 88</div></a>
+        <a href="https://wa.me/2250507647326" target="_blank" class="contact-link"><span class="contact-link-icon">💬</span><div><span class="contact-link-label">WhatsApp (cliquez pour discuter)</span>+225 05 07 64 73 26</div></a>
+        <a href="tel:+2250720315288" class="contact-link"><span class="contact-link-icon">📞</span><div><span class="contact-link-label">Téléphone</span>+225 07 20 31 52 88</div></a>
         <a href="https://github.com/hack1-z" target="_blank" class="contact-link"><span class="contact-link-icon">💻</span><div><span class="contact-link-label">GitHub</span>hack1-z</div></a>
-        <a href="https://www.credly.com/users/cayeniga-anthelme" target="_blank" class="contact-link"><span class="contact-link-icon">🏅</span><div><span class="contact-link-label">Credly</span>Voir tous mes badges</div></a>
+        <a href="https://www.credly.com/users/cayeniga-anthelme" target="_blank" class="contact-link"><span class="contact-link-icon">🏅</span><div><span class="contact-link-label">Credly</span>Tous mes badges</div></a>
+        <a href="https://www.linkedin.com/in/cayeniga-anthelme" target="_blank" class="contact-link"><span class="contact-link-icon">🔗</span><div><span class="contact-link-label">LinkedIn</span>Profil professionnel</div></a>
       </div>
     </div>
     <div class="contact-right fade-in">
-      <h3 style="font-family:'Syne',sans-serif;font-size:1.15rem;margin-bottom:22px;">Envoyer un message</h3>
+      <h3 style="font-family:'DM Serif Display',serif;font-size:1.15rem;margin-bottom:22px;">Envoyer un message</h3>
       <div class="form-group"><label class="form-label">Nom complet</label><input type="text" class="form-input" id="f-name" placeholder="Votre nom"/></div>
       <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="f-email" placeholder="votre@email.com"/></div>
       <div class="form-group"><label class="form-label">Sujet</label><input type="text" class="form-input" id="f-subj" placeholder="Offre de stage / emploi..."/></div>
@@ -744,15 +750,44 @@
   </div>
 </section>
 
+<!-- ANNEXE - Hackathon MVP (projet complémentaire) -->
+<section id="annexe">
+  <div class="annexe-content">
+    <div class="annexe-badge">Projet Complémentaire</div>
+    <h2 class="annexe-title">Hackathon Future Studio — MVP en 72h</h2>
+    <div class="annexe-card fade-in">
+      <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap;">
+        <span style="font-size: 3rem;">🚀</span>
+        <div>
+          <h3 style="font-family:'DM Serif Display',serif; margin-bottom: 5px;">Contexte : Hackathon avec Intergravity AI</h3>
+          <p style="color: var(--muted);">Participation à un hackathon intense de 72 heures avec une équipe de 4 personnes. Développement d'un MVP fonctionnel sous contrainte de temps.</p>
+        </div>
+      </div>
+      <div style="background: rgba(0,245,160,0.05); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+        <strong>📚 Apprentissages :</strong> Travail en équipe sous pression, prototypage rapide, "vibe coding", présentation devant un jury, gestion du temps et des priorités.
+      </div>
+      <div class="project-tech" style="justify-content: center;">
+        <span class="tech-tag">Intergravity AI</span>
+        <span class="tech-tag">MVP</span>
+        <span class="tech-tag">Agile</span>
+        <span class="tech-tag">Teamwork</span>
+        <span class="tech-tag">Présentation</span>
+      </div>
+      <p style="text-align: center; margin-top: 20px; color: var(--muted); font-size: 0.85rem;">Ce projet illustre ma capacité à m'adapter et à livrer des résultats dans des conditions exigeantes.</p>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">CCAZ.SEC</div>
-  <div class="footer-copy">© 2026 Cayeniga Anthelme Zakaria Coulibaly — Abidjan, Côte d'Ivoire</div>
+  <div class="footer-copy">© 2026 Cayeniga Anthelme Zakaria Coulibaly - Abidjan, Côte d'Ivoire</div>
   <div class="footer-socials">
     <a href="https://github.com/hack1-z" target="_blank" class="footer-social">GitHub</a>
     <a href="https://www.credly.com/users/cayeniga-anthelme" target="_blank" class="footer-social">Credly</a>
-    <a href="mailto:coulzak14gmail.com" class="footer-social">Email</a>
+    <a href="mailto:coulzak14@gmail.com" class="footer-social">Email</a>
     <a href="https://wa.me/2250507647326" target="_blank" class="footer-social">WhatsApp</a>
+    <a href="https://www.linkedin.com/in/cayeniga-anthelme" target="_blank" class="footer-social">LinkedIn</a>
   </div>
 </footer>
 
@@ -767,7 +802,7 @@
       cursor.style.left = (mx-6)+'px'; cursor.style.top = (my-6)+'px';
     });
     (function anim(){ rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=(rx-18)+'px'; ring.style.top=(ry-18)+'px'; requestAnimationFrame(anim); })();
-    document.querySelectorAll('a,button,.skill-card,.project-card,.engage-card').forEach(el => {
+    document.querySelectorAll('a,button,.skill-card,.project-card,.engage-card,.skill-item,.lab-card').forEach(el => {
       el.addEventListener('mouseenter', () => cursor.style.transform='scale(2.5)');
       el.addEventListener('mouseleave', () => cursor.style.transform='scale(1)');
     });
@@ -776,8 +811,8 @@
   // Hamburger
   const ham = document.getElementById('hamburger');
   const mob = document.getElementById('mobileMenu');
-  ham.addEventListener('click', () => mob.classList.toggle('open'));
-  function closeMob() { mob.classList.remove('open'); }
+  if(ham) ham.addEventListener('click', () => mob.classList.toggle('open'));
+  function closeMob() { if(mob) mob.classList.remove('open'); }
 
   // Fade-in
   const obs = new IntersectionObserver(entries => {
@@ -785,30 +820,19 @@
   }, { threshold: 0.07 });
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-  // Terminal tabs
-  function switchTab(btn, id) {
-    document.querySelectorAll('.ttab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.t-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(id).classList.add('active');
-  }
-
   // Contact form
   function sendMail() {
-    const name = document.getElementById('f-name').value;
-    const email = document.getElementById('f-email').value;
-    const subject = document.getElementById('f-subj').value;
-    const message = document.getElementById('f-msg').value;
+    const name = document.getElementById('f-name')?.value || '';
+    const email = document.getElementById('f-email')?.value || '';
+    const subject = document.getElementById('f-subj')?.value || '';
+    const message = document.getElementById('f-msg')?.value || '';
     
     if (!name || !email || !subject || !message) {
       alert('Veuillez remplir tous les champs');
       return;
     }
     
-    // Création du corps du message
     const body = `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-    
-    // Ouverture du client mail par défaut
     window.location.href = `mailto:coulzak14@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 </script>
