@@ -1,0 +1,125 @@
+{
+  "maj": "2026-09-15",
+  "projets": [
+    {
+      "titre": "CyberHEC, cyber-range et plateforme CTF en production",
+      "contexte": "Contexte : entraînement de plus de 40 apprenants, 2026",
+      "description": "Conception, déploiement et exploitation d'un cyber-range complet sur VM Azure (Ubuntu 24.04) : CTFd en Docker derrière Caddy et HTTPS Let's Encrypt, labs progressifs (recon Nmap, exploitation FTP « Operation Nexus », boot2root avec escalade de privilèges), banque de 40 QCM, scoring dynamique et bonus first-blood automatisé. Accès apprenants isolé par VPN WireGuard, avec portail Flask en libre-service générant une configuration unique par pseudo.",
+      "noteLabel": "Sécurité :",
+      "note": "segmentation stricte apprenants et hôte prouvée au pare-feu (iptables INPUT et DOCKER-USER), SSH par clé, fail2ban système et web, durcissement sysctl, auditd et Docker (indice Lynis 73/100), page d'administration masquée, blocage anti-webshell, sauvegardes quotidiennes.",
+      "tags": ["Azure", "Docker", "CTFd", "WireGuard", "Caddy TLS", "iptables", "fail2ban", "Lynis"]
+    },
+    {
+      "titre": "Chaîne SOC maison, détection et réponse temps réel",
+      "contexte": "Contexte : supervision du cyber-range CyberHEC, 2026",
+      "description": "Développement d'une chaîne SOC légère de bout en bout : collecteur Python normalisant les journaux fail2ban, honeypot, Caddy, auditd et SSH au schéma ECS vers SQLite avec géolocalisation IP en cache, moteur de détection (brute force, scan web, outillage d'attaque, hit honeypot, corrélation multi-services) générant des alertes, dashboard « SOC ops room » (Chart.js, rafraîchissement 30 s, protégé par authentification) et notifications Telegram temps réel.",
+      "noteLabel": "Apprentissages :",
+      "note": "normalisation ECS, écriture de règles de corrélation, triage d'alertes, géolocalisation et analyse ASN des IP bannies, réponse légale aux attaques (bannière d'avertissement, signalement AbuseIPDB), le hack-back étant écarté.",
+      "tags": ["Python", "ECS", "SQLite", "Chart.js", "systemd", "Telegram API", "Honeypot SSH"]
+    },
+    {
+      "titre": "BlueShield SOC Lab, stack ELK et dashboard analyste",
+      "contexte": "Contexte : laboratoire Blue Team sur 4 semaines",
+      "description": "Construction d'un SOC de A à Z sur machine virtuelle KVM/QEMU : ELK Stack 8.19, Filebeat, Nginx et index templates personnalisés, doublé d'un tableau de bord analyste (React, Vite, Tailwind et Recharts en frontend, Node, Express, SQLite et client Elasticsearch en backend, avec bascule sur données simulées). Programme des semaines 1 à 4 terminé, chaque incident de déploiement documenté dans un write-up structuré.",
+      "noteLabel": "Apprentissages :",
+      "note": "ingestion et parsing de logs, index templates, dimensionnement d'une stack ELK, restitution visuelle des données pour un analyste.",
+      "tags": ["ELK 8.19", "Filebeat", "KVM QEMU", "React", "Node Express", "Recharts"]
+    },
+    {
+      "titre": "Investigation OSINT, fraude au recrutement usurpant un aéroport",
+      "contexte": "Contexte : incident réel signalé en Côte d'Ivoire",
+      "description": "Analyse complète d'une campagne frauduleuse usurpant l'identité de l'aéroport international d'Abidjan : investigation OSINT, analyse DNS et en-têtes HTTP, rétro-ingénierie du JavaScript du faux portail, identification du mode opératoire et de la collecte de données. Livrables : rapports d'incident destinés à la PLCC et publications de sensibilisation grand public.",
+      "noteLabel": "Apprentissages :",
+      "note": "méthodologie OSINT, analyse d'infrastructure malveillante, rédaction d'un rapport d'incident exploitable par les autorités, communication de crise.",
+      "tags": ["OSINT", "DNS", "Analyse HTTP", "JavaScript", "Threat Intel"]
+    },
+    {
+      "titre": "Plateforme d'auto-évaluation cybersécurité pour PME",
+      "contexte": "Contexte : MVP développé sous marque Cybastion",
+      "description": "Application web permettant à une PME d'évaluer sa maturité cyber : questionnaires inspirés du NIST CSF et des référentiels ANSSI, scoring pondéré, classification par niveau de risque et génération automatique d'un rapport PDF de recommandations. Déploiement conteneurisé avec Docker Compose et nginx.",
+      "noteLabel": "Sécurité applicative :",
+      "note": "Helmet, politique CORS, limitation de débit, validation systématique des entrées.",
+      "tags": ["Node.js", "Express", "SQLite", "NIST CSF", "Docker", "nginx"]
+    },
+    {
+      "titre": "ScamShield EDU, éducation aux médias et détection d'arnaques",
+      "contexte": "Contexte : UNESCO Youth Hackathon 2026",
+      "description": "Plateforme d'éducation aux médias et à l'information conçue pour le contexte africain : vérification d'URL via VirusTotal et Google Safe Browsing, parcours pédagogique gamifié en 5 modules, application PWA fonctionnant hors ligne et repli USSD ou SMS pour les utilisateurs sans smartphone. Stack intégralement gratuite (Vercel, Railway, Supabase, Groq, Upstash Redis).",
+      "noteLabel": "Apprentissages :",
+      "note": "intégration d'API de threat intelligence, conception offline-first, accessibilité numérique en contexte de faible connectivité.",
+      "tags": ["VirusTotal API", "Safe Browsing", "PWA", "Supabase", "USSD SMS"]
+    },
+    {
+      "titre": "CYBERALERT CI, portail citoyen de signalement d'incidents",
+      "contexte": "Contexte : projet personnel en développement",
+      "description": "Portail permettant à tout citoyen ivoirien de signaler un incident cyber (phishing, arnaque, malware) et d'être orienté vers la bonne réponse. Backend FastAPI et PostgreSQL, application Flutter (Riverpod, GoRouter), déploiement Docker. Projet couplé à CyberFlair, un jeu éducatif sur les deepfakes et la désinformation ancré sur des attaques réellement survenues en Afrique, dont le mécanisme de signalement bascule vers la plateforme réelle.",
+      "noteLabel": "Objectif :",
+      "note": "raccourcir le délai entre la victime et le signalement, et produire une donnée exploitable sur la menace cyber en Côte d'Ivoire.",
+      "tags": ["FastAPI", "PostgreSQL", "Flutter", "Docker", "Riverpod"]
+    },
+    {
+      "titre": "Déploiement SIEM complet avec Wazuh",
+      "contexte": "Contexte : laboratoire personnel SOC",
+      "description": "Installation et configuration de Wazuh (manager, indexer, dashboard) avec 3 agents sous Linux et Windows. Création de règles personnalisées pour détecter des tentatives de brute-force SSH et des modifications de fichiers critiques.",
+      "noteLabel": "Apprentissages :",
+      "note": "architecture SIEM, corrélation d'alertes, configuration d'agents, analyse de logs en temps réel.",
+      "tags": ["Wazuh", "Linux", "systemd", "YAML", "Log analysis"]
+    },
+    {
+      "titre": "Suricata IDS et IPS, règles et alertes",
+      "contexte": "Contexte : détection d'intrusions réseau",
+      "description": "Installation de Suricata en mode IDS, création de règles personnalisées pour détecter des scans Nmap, des tentatives d'exploitation et du trafic C2. Intégration avec Elasticsearch pour la visualisation des alertes.",
+      "noteLabel": "Apprentissages :",
+      "note": "écriture de règles Suricata, analyse de trafic réseau, détection de patterns malveillants.",
+      "tags": ["Suricata", "Elasticsearch", "Kibana", "PCAP"]
+    },
+    {
+      "titre": "Audit de sécurité NIST CSF",
+      "contexte": "Contexte : simulation d'audit pour une PME fictive",
+      "description": "Application complète du cadre NIST Cybersecurity Framework (Identify, Protect, Detect, Respond, Recover). Identification des actifs critiques, évaluation des risques, rédaction d'un rapport d'audit de 25 pages avec recommandations prioritaires.",
+      "noteLabel": "Apprentissages :",
+      "note": "GRC, analyse de risques, documentation de sécurité, méthodologie d'audit.",
+      "tags": ["NIST CSF", "ISO 27001", "Risk Assessment", "GRC"]
+    },
+    {
+      "titre": "Réseau d'entreprise segmenté, VLAN, OSPF et DMZ",
+      "contexte": "Contexte : architecture réseau sécurisée",
+      "description": "Conception sur Cisco Packet Tracer d'un réseau d'entreprise avec 4 VLAN (RH, IT, DMZ, Admin), routage inter-VLAN OSPF, serveurs DHCP, pare-feu et DMZ hébergeant un serveur web. Tests de connectivité et de segmentation.",
+      "noteLabel": "Apprentissages :",
+      "note": "conception réseau, routage dynamique, segmentation, sécurité périmétrique.",
+      "tags": ["Cisco PT", "VLAN", "OSPF", "DHCP", "DMZ"]
+    },
+    {
+      "titre": "VPN site à site avec OpenVPN et PKI",
+      "contexte": "Contexte : connexion sécurisée de sites distants",
+      "description": "Mise en place d'une infrastructure VPN site à site avec OpenVPN. Création d'une autorité de certification avec Easy-RSA, génération de certificats, configuration des serveurs et des clients. Tests de chiffrement et d'authentification.",
+      "noteLabel": "Apprentissages :",
+      "note": "PKI, gestion de certificats, configuration VPN, chiffrement TLS.",
+      "tags": ["OpenVPN", "Easy-RSA", "PKI", "TLS", "AES-256"]
+    },
+    {
+      "titre": "Analyse de logs et détection de patterns",
+      "contexte": "Contexte : détection d'attaques par analyse de logs",
+      "description": "Scripts Python pour analyser des fichiers de logs (auth.log, apache access.log) et détecter des patterns d'attaques : brute-force, scans de répertoires, requêtes suspectes. Création de visualisations Power BI pour le reporting.",
+      "noteLabel": "Apprentissages :",
+      "note": "analyse de logs, expressions régulières, détection de patterns, visualisation de données.",
+      "tags": ["Python", "Regex", "Power BI", "DAX", "CSV"]
+    },
+    {
+      "titre": "Scripts d'automatisation sécurité en Python",
+      "contexte": "Contexte : automatisation de tâches répétitives",
+      "description": "Développement de scripts Python pour le scan de ports, la collecte automatique de logs, l'envoi d'alertes par email et la vérification d'intégrité de fichiers, à l'aide de bibliothèques comme requests, schedule et hashlib.",
+      "noteLabel": "Apprentissages :",
+      "note": "programmation Python, automatisation, intégration de scripts.",
+      "tags": ["Python", "Requests", "Schedule", "Hashlib"]
+    },
+    {
+      "titre": "Tableau de bord cybersécurité Power BI",
+      "contexte": "Contexte : visualisation de données de sécurité",
+      "description": "Création d'un tableau de bord interactif Power BI pour visualiser des logs de sécurité. Modélisation de données à partir de fichiers CSV (logs d'alertes, tentatives de connexion), création de KPI (nombre d'incidents, sévérité, tendances) et graphiques dynamiques pour le reporting.",
+      "noteLabel": "Apprentissages :",
+      "note": "modélisation de données, DAX, création de KPI, import CSV, visualisation de données de sécurité.",
+      "tags": ["Power BI", "DAX", "KPI", "Import CSV", "Data modeling"]
+    }
+  ]
+}
